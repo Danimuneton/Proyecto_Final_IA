@@ -1,0 +1,211 @@
+{
+  "descripcion": "Origen móvil mensual ene-jul 2024: se re-entrena con días anteriores a cada mes.",
+  "n_predicciones": 3249,
+  "distribucion_clases": [
+    571,
+    2496,
+    182
+  ],
+  "verificacion_sklearn": {
+    "acuerdo_prediccion": 1.0,
+    "max_diferencia_probabilidad": 9.43689570931383e-16,
+    "n": 1385
+  },
+  "modelos": {
+    "Naive Bayes A_basico": {
+      "accuracy": 0.8150200061557402,
+      "f1_macro": 0.6655847161126314,
+      "f1_por_clase": [
+        0.5609990393852067,
+        0.8829600778967869,
+        0.5527950310559006
+      ],
+      "matriz_confusion": [
+        [
+          292,
+          279,
+          0
+        ],
+        [
+          178,
+          2267,
+          51
+        ],
+        [
+          0,
+          93,
+          89
+        ]
+      ],
+      "recall_danina": 0.489010989010989
+    },
+    "Naive Bayes B_nivel_fino": {
+      "accuracy": 0.8017851646660511,
+      "f1_macro": 0.5420111628809939,
+      "f1_por_clase": [
+        0.4084158415841584,
+        0.8816176470588234,
+        0.336
+      ],
+      "matriz_confusion": [
+        [
+          165,
+          406,
+          0
+        ],
+        [
+          72,
+          2398,
+          26
+        ],
+        [
+          0,
+          140,
+          42
+        ]
+      ],
+      "recall_danina": 0.23076923076923078
+    },
+    "Naive Bayes C_nivel_fino_sin_calendario": {
+      "accuracy": 0.8017851646660511,
+      "f1_macro": 0.57715865235806,
+      "f1_por_clase": [
+        0.40145985401459855,
+        0.8807407407407407,
+        0.4492753623188405
+      ],
+      "matriz_confusion": [
+        [
+          165,
+          406,
+          0
+        ],
+        [
+          86,
+          2378,
+          32
+        ],
+        [
+          0,
+          120,
+          62
+        ]
+      ],
+      "recall_danina": 0.34065934065934067
+    },
+    "Línea base: persistencia (mañana = hoy)": {
+      "accuracy": 0.8113265620190828,
+      "f1_macro": 0.6917258076989637,
+      "f1_por_clase": [
+        0.5898778359511344,
+        0.8770804090635653,
+        0.6082191780821918
+      ],
+      "matriz_confusion": [
+        [
+          338,
+          233,
+          0
+        ],
+        [
+          237,
+          2187,
+          72
+        ],
+        [
+          0,
+          71,
+          111
+        ]
+      ],
+      "recall_danina": 0.6098901098901099
+    },
+    "Línea base: clase mayoritaria": {
+      "accuracy": 0.7682363804247461,
+      "f1_macro": 0.2896431679721497,
+      "f1_por_clase": [
+        0.0,
+        0.8689295039164491,
+        0.0
+      ],
+      "matriz_confusion": [
+        [
+          0,
+          571,
+          0
+        ],
+        [
+          0,
+          2496,
+          0
+        ],
+        [
+          0,
+          182,
+          0
+        ]
+      ],
+      "recall_danina": 0.0
+    }
+  },
+  "por_mes": {
+    "2024-01": {
+      "n": 463,
+      "danina": 10,
+      "acc_nb": 0.9157667386609071,
+      "acc_persistencia": 0.9136069114470843
+    },
+    "2024-02": {
+      "n": 446,
+      "danina": 19,
+      "acc_nb": 0.8968609865470852,
+      "acc_persistencia": 0.8721973094170403
+    },
+    "2024-03": {
+      "n": 488,
+      "danina": 98,
+      "acc_nb": 0.8442622950819673,
+      "acc_persistencia": 0.8422131147540983
+    },
+    "2024-04": {
+      "n": 467,
+      "danina": 55,
+      "acc_nb": 0.8201284796573876,
+      "acc_persistencia": 0.8137044967880086
+    },
+    "2024-05": {
+      "n": 468,
+      "danina": 0,
+      "acc_nb": 0.7393162393162394,
+      "acc_persistencia": 0.7307692307692307
+    },
+    "2024-06": {
+      "n": 467,
+      "danina": 0,
+      "acc_nb": 0.7109207708779444,
+      "acc_persistencia": 0.7173447537473233
+    },
+    "2024-07": {
+      "n": 450,
+      "danina": 0,
+      "acc_nb": 0.78,
+      "acc_persistencia": 0.7911111111111111
+    }
+  },
+  "bootstrap_nb_menos_persistencia": {
+    "accuracy": {
+      "media": 0.003738552258288518,
+      "ic95": [
+        -0.007163113179156008,
+        0.013850735531308169
+      ]
+    },
+    "f1_macro": {
+      "media": -0.025870635014255506,
+      "ic95": [
+        -0.05795272401185001,
+        0.00023354920368372545
+      ]
+    }
+  }
+}
