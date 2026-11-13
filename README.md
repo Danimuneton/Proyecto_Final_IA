@@ -196,15 +196,14 @@ Detalle completo: [`reports/metricas_parte1.md`](reports/metricas_parte1.md) · 
 | LLM | Herramienta correcta | Citó fuente (11 que lo requieren) | Citas válidas | Valor numérico correcto |
 |---|---|---|---|---|
 | `qwen2.5:7b` local (Ollama, CPU) | 11/14 | 11/11 | 10/11 | 3/3 |
-| **`openai/gpt-oss-120b` (Groq, modelo de la app)** | 11/14 | 10/11 | 10/11 | 3/3 |
+| `openai/gpt-oss-120b` (Groq), 1.ª corrida | 11/14 | 10/11 | 10/11 | 3/3 |
+| **`openai/gpt-oss-120b` (Groq), después de las correcciones (modelo de la app)** | **13/14** | **11/11** | **11/11** | **3/3** |
 
-**Revisión manual de las respuestas de `gpt-oss-120b`** ([`evaluacion/resultados_agente_openai_gpt-oss-120b.md`](evaluacion/resultados_agente_openai_gpt-oss-120b.md)). Las métricas automáticas son optimistas: 7 de 14 respuestas son correctas y fundamentadas (P01, P02, P06, P09, P11, P12, P13) y P04 es correcta en cifras pero con una interpretación confusa. Errores encontrados:
-- **Estación equivocada (P03, P08, P10):** al pedir el pronóstico pasó la fecha de mañana, recibió un error y reintentó con la estación seleccionada en el dashboard (MED-BEME) en lugar de Itagüí o Envigado; para Rionegro, que no tiene estación, respondió con MED-BEME diciendo que era "la más cercana".
-- **Afirmaciones falsas (P05):** dijo que el ICA estaba en Rojo y que se superaba la norma, cuando el dato era 27,4 µg/m³ (Aceptable); confundió el estado "Episodio crítico" del HMM con una categoría ICA, y recomendó N95 sin documento que lo respalde.
-- **Sigla mal expandida (P07)** y **recomendaciones de salud sin consultar documentos (P14).**
-- P08 sí citó fuentes, pero con corchetes 【】 que el evaluador no reconocía (cuenta como "no citó").
+**Revisión manual.** En la 1.ª corrida ([`..._antes_correcciones.md`](evaluacion/resultados_agente_openai_gpt-oss-120b_antes_correcciones.md)) solo 7 de 14 respuestas eran correctas y fundamentadas: en P03, P08 y P10 respondió con otra estación (pasaba la fecha de mañana a `predict_tomorrow`, recibía un error y reintentaba con la estación del dashboard; para Rionegro dijo que MED-BEME era "la más cercana"); en P05 afirmó que el ICA estaba en Rojo y se superaba la norma (era 27,4 µg/m³, Aceptable); en P07 expandió mal la sigla POECA; en P14 dio recomendaciones de salud sin documentos.
 
-**Correcciones aplicadas después de esta evaluación** (no reflejadas en las métricas de arriba): `predict_tomorrow` acepta la fecha de mañana; el error de estación inexistente prohíbe sustituirla; el prompt fija las siglas y prohíbe usar otra estación; `get_episode_state` entrega la categoría ICA de cada estación y aclara que los estados del HMM no son colores del ICA; el verificador pide `search_docs` si la respuesta da recomendaciones de salud sin documentos; se aceptan citas con 【】. Para medir su efecto hay que volver a correr `python scripts\evaluate_agent.py`.
+Correcciones: `predict_tomorrow` acepta la fecha de mañana; el error de estación inexistente prohíbe sustituirla; el prompt fija las siglas y prohíbe usar otra estación; `get_episode_state` entrega la categoría ICA de cada estación y aclara que los estados del HMM no son colores del ICA; el verificador pide `search_docs` si hay recomendaciones de salud sin documentos; se aceptan citas con 【】.
+
+En la 2.ª corrida ([`resultados_agente_openai_gpt-oss-120b.md`](evaluacion/resultados_agente_openai_gpt-oss-120b.md)) **10 de 14 respuestas son correctas y fundamentadas** y desaparecieron todos los errores anteriores. Quedan: P04 invierte el efecto de la lluvia (dice que la probabilidad de Dañina baja de 14 % a 8 %, cuando con lluvia sube de 8 % a 14 %); P12 usa el pronóstico del día en vez de la metodología y concluye que el modelo es "más confiable" que la persistencia, aunque la diferencia no es significativa; P03 atribuye el modelo a SIATA/AMVA y P07 mezcla el estado del HMM con los episodios del POECA (errores menores). La única falla de herramienta es P12. Advertencia: las correcciones se diseñaron mirando estas mismas preguntas, así que la 2.ª corrida es optimista.
 
 ---
 
