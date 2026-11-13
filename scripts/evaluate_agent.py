@@ -60,6 +60,7 @@ def evaluate_answer(q: dict, res) -> dict:
         "valor_correcto": valor_ok,
         "errores_herramienta": sum(1 for s in res.steps if not s.ok),
         "iteraciones": res.iterations,
+        "modelo_usado": res.model,
         "verificaciones": res.verificaciones,
         "segundos": res.seconds,
         "error_api": res.error or "",
@@ -70,12 +71,15 @@ def evaluate_answer(q: dict, res) -> dict:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--solo", nargs="*", help="IDs de preguntas a correr (p. ej. P01 P05)")
-    ap.add_argument("--pausa", type=float, default=2.0, help="segundos entre preguntas (límites de uso)")
+    ap.add_argument("--pausa", type=float, default=None,
+                    help="segundos entre preguntas (por defecto 45 con Groq por el límite de tokens/minuto)")
     ap.add_argument("--reporte", action="store_true",
                     help="solo regenerar el reporte .md desde el CSV existente (sin llamar al LLM)")
     args = ap.parse_args()
 
     cfg = llm_config()
+    if args.pausa is None:
+        args.pausa = 45.0 if cfg["provider"] == "groq" else 2.0
     print(f"LLM: {cfg['provider']} / {cfg['model']} @ {cfg['base_url']}")
     preguntas = json.loads((C.EVAL_DIR / "preguntas_agente.json").read_text(encoding="utf-8"))
     if args.reporte:

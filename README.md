@@ -97,7 +97,9 @@ streamlit run app.py
 | NVIDIA NIM | `LLM_PROVIDER=nvidia`, `NVIDIA_API_KEY=...` | `meta/llama-3.3-70b-instruct` |
 | Ollama local, sin llave | `LLM_PROVIDER=ollama` (antes: `ollama pull qwen2.5:7b`) | `qwen2.5:7b` |
 
-Cualquier modelo se cambia con `LLM_MODEL=...`. Sin llave, el dashboard funciona completo (mapa, series, predicción, evaluación) y el chat muestra un mensaje claro de configuración.
+Cualquier modelo se cambia con `LLM_MODEL=...`.
+
+**Límites de la capa gratuita de Groq** (`openai/gpt-oss-120b`: 30 solicitudes/min, 8.000 tokens/min y 200.000 tokens/día). Para respetarlos, el agente envía observaciones compactas, usa `reasoning_effort=low`, espera lo que indica el encabezado `retry-after` ante un error 429 y, si el límite persiste (p. ej. cupo diario agotado), cambia automáticamente a `openai/gpt-oss-20b` (`LLM_FALLBACK_MODEL`). Si aun así falla, el chat muestra lo que alcanzaron a devolver las herramientas. `scripts/evaluate_agent.py` espera 45 s entre preguntas con Groq. Recomendación: no correr la evaluación varias veces el mismo día. Sin llave, el dashboard funciona completo (mapa, series, predicción, evaluación) y el chat muestra un mensaje claro de configuración.
 
 **Uso sugerido para la demostración:** fecha de consulta 2024-03-15 (en plena temporada crítica de marzo de 2024), estación MED-BEME (Belén). Pruebe las preguntas sugeridas del chat, cambie el municipio y mueva el escenario de mañana.
 

@@ -342,6 +342,8 @@ with tab_chat:
     for m in st.session_state.chat:
         with st.chat_message(m["role"]):
             st.markdown(m["content"])
+            if m.get("modelo"):
+                st.caption(m["modelo"])
             if m.get("steps"):
                 with st.expander(f"🔧 Herramientas usadas ({len(m['steps'])})"):
                     for s in m["steps"]:
@@ -365,9 +367,12 @@ with tab_chat:
                     hist = [{"role": m["role"], "content": m["content"]} for m in st.session_state.chat[:-1]]
                     res = agent.run(prompt, history=hist, fecha=str(fecha.date()), estacion=info.nombre_corto)
                     answer, steps, sources = res.answer, res.steps, res.sources
+                    modelo = f"Modelo: `{res.model}` · {res.seconds} s · {res.iterations} iteraciones"
                 except Exception as exc:  # noqa: BLE001
-                    answer, steps, sources = f"⚠️ {exc}", [], []
+                    answer, steps, sources, modelo = f"⚠️ {exc}", [], [], ""
             st.markdown(answer)
+            if modelo:
+                st.caption(modelo)
             steps_d = [{"tool": s.tool, "args": s.args, "ok": s.ok, "error": s.observation.get("error", "")}
                        for s in steps]
             if steps_d:
@@ -379,4 +384,5 @@ with tab_chat:
                 with st.expander("📚 Fuentes consultadas"):
                     for src in sources:
                         st.markdown(f"- {src['cita']} {src['titulo']} {('— ' + src['url']) if src.get('url') else ''}")
-        st.session_state.chat.append({"role": "assistant", "content": answer, "steps": steps_d, "sources": sources})
+        st.session_state.chat.append({"role": "assistant", "content": answer, "steps": steps_d, "sources": sources,
+                                      "modelo": modelo})
