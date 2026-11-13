@@ -185,24 +185,9 @@ Cada corrida guarda `evaluacion\resultados_agente_<modelo>.md/.csv`.
 
 ## 5. Arquitectura
 
-```mermaid
-flowchart LR
-    A["SIATA JSON<br/>PM2.5 horario"] --> P["data.py<br/>limpieza y promedios 24 h"]
-    B["Open-Meteo ERA5"] --> P
-    P --> H["HMM propio<br/>Baum-Welch, forward, Viterbi"]
-    H -->|"P(estado de hoy)"| L["Regresión logística propia<br/>clase ICA de mañana"]
-    P --> L
-    D["docs/corpus<br/>Res. 2254, POECA, salud, OMS"] --> R["RAG híbrido<br/>MiniLM multilingüe + FAISS + TF-IDF"]
-    H --> T["Herramientas<br/>get_pm25, predict_tomorrow<br/>get_episode_state, search_docs"]
-    L --> T
-    P --> T
-    R --> T
-    T <--> G["Agente LLM<br/>loop T_max = 6 + verificador de citas"]
-    G --> UI["Dashboard Streamlit<br/>mapa, series, predicción, evaluación, chat"]
-    H --> UI
-    L --> UI
-    P --> UI
-```
+![Arquitectura del proyecto](reports/figures/arquitectura.png)
+
+_Diagrama generado con `python scripts/build_arquitectura.py`._
 
 **Integración no trivial Parte 1 ↔ Parte 2:** el HMM entrega las probabilidades filtradas del estado latente, que son variables del clasificador; ambos modelos son herramientas que el agente invoca, y el agente combina sus salidas con los documentos recuperados (p. ej., "¿puedo trotar mañana si tengo asma?" → `predict_tomorrow` + `search_docs` → respuesta con citas).
 
