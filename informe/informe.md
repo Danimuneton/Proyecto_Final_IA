@@ -1,12 +1,12 @@
 ---
 title: "Agente de calidad del aire del Valle de Aburrá: HMM, regresión logística y agente LLM con RAG"
 subtitle: "Proyecto final integrador · SI3003 Inteligencia Artificial · Universidad EAFIT · 2026-1"
-author: "Daniel Muñeton · [NOMBRE DEL COMPAÑERO] · Grupo [N.º]"
+author: "Daniel Muñeton · Tomas Vera · Grupo jueves"
 ---
 
 # Agente de calidad del aire del Valle de Aburrá
 
-**SI3003 Inteligencia Artificial · EAFIT 2026-1 · Daniel Muñeton · [NOMBRE DEL COMPAÑERO] · Grupo [N.º]**
+**SI3003 Inteligencia Artificial · EAFIT 2026-1 · Daniel Muñeton · Tomas Vera · Grupo jueves**
 Repositorio: https://github.com/Danimuneton/Proyecto_Final_IA
 
 ## 1. Problema

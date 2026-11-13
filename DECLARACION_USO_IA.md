@@ -1,7 +1,7 @@
 # Declaración de uso de IA generativa
 
 **Proyecto:** Agente de calidad del aire del Valle de Aburrá · SI3003 Inteligencia Artificial · EAFIT 2026-1
-**Integrantes:** Daniel Muñeton · _[NOMBRE DEL COMPAÑERO]_
+**Integrantes:** Daniel Muñeton · Tomas Vera
 
 De acuerdo con el pacto pedagógico del curso, declaramos las herramientas de IA generativa usadas, su propósito y el alcance de su participación.
 
@@ -24,7 +24,7 @@ Estos modelos **no** se usan para generar los datos ni las métricas: las cifras
 ## 3. Qué hizo el equipo (completar con honestidad antes de entregar)
 
 - Elección de la idea 3.1 y definición del alcance: _[describir]_
-- Revisión y comprensión del código: _[indicar qué módulos revisó cada integrante; p. ej., Daniel: `hmm.py`, `modeling.py`; compañero: `agent.py`, `app.py`]_
+- Revisión y comprensión del código: _[indicar qué módulos revisó cada integrante; p. ej., Daniel: `hmm.py`, `modeling.py`; Tomas: `agent.py`, `app.py`]_
 - Verificación de resultados: _[p. ej., ejecutaron los notebooks, revisaron las métricas y las respuestas del agente]_
 - Cambios o decisiones propias: _[listar]_
 - Evaluación del agente con Groq y revisión manual de las respuestas: _[describir]_

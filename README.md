@@ -3,7 +3,7 @@
 **Proyecto final integrador · SI3003 Inteligencia Artificial · Universidad EAFIT · 2026-1**
 Profesor: Jorge Iván Padilla Buriticá
 
-**Integrantes:** Daniel Muñeton · _[NOMBRE DEL COMPAÑERO]_ · **Grupo:** _[N.º]_
+**Integrantes:** Daniel Muñeton · Tomas Vera · **Grupo:** jueves
 
 > **Problema.** Los ciudadanos no comprenden qué significa el PM2.5 del día ni qué hacer al respecto.
 > **Solución.** Un dashboard con datos reales del SIATA que (1) estima el **estado latente** de la calidad del aire con un **Modelo Oculto de Markov** propio, (2) **predice la categoría ICA de mañana** con una **regresión logística** propia que usa el estado del HMM, y (3) ofrece un **agente LLM con RAG** que consulta datos, predice y explica la norma, los protocolos de episodios (POECA) y las recomendaciones de salud **citando las fuentes**.
