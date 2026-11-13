@@ -247,6 +247,9 @@ class AirQualityAgent:
                 answer = (resp.choices[0].message.content or "").strip()
             if not answer:
                 answer = "No pude generar una respuesta. Intente reformular la pregunta."
+            elif _grounding_problem(answer, steps):
+                answer += ("\n\n⚠️ *Verificación automática: esta respuesta contiene citas que no "
+                           "provienen de las herramientas consultadas. Contrástela con las fuentes oficiales.*")
             return AgentResult(answer, steps, _collect_sources(steps), it, None, self.model,
                                round(time.time() - t0, 2), nudges)
         except Exception as exc:  # noqa: BLE001
