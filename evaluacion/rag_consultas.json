@@ -1,0 +1,20 @@
+[
+  {"consulta": "¿Cuál es el nivel máximo permisible de PM2.5 en 24 horas en Colombia?", "doc_esperado": "RES2254"},
+  {"consulta": "¿Qué rango de concentración corresponde al ICA naranja para PM2.5?", "doc_esperado": "RES2254"},
+  {"consulta": "¿Cómo se calcula el índice de calidad del aire?", "doc_esperado": "RES2254"},
+  {"consulta": "¿Cuándo se declara el nivel de alerta por constatación con medias móviles?", "doc_esperado": "RES2254"},
+  {"consulta": "¿Qué es el POECA y qué acuerdo metropolitano lo adoptó?", "doc_esperado": "POECA"},
+  {"consulta": "¿Qué medidas toma el Área Metropolitana durante un episodio de contaminación?", "doc_esperado": "POECA"},
+  {"consulta": "¿En qué meses son las temporadas críticas de calidad del aire en el valle?", "doc_esperado": "POECA"},
+  {"consulta": "¿Puedo salir a correr si el aire está dañino para grupos sensibles?", "doc_esperado": "SALUD"},
+  {"consulta": "¿Quiénes son los grupos sensibles al material particulado?", "doc_esperado": "SALUD"},
+  {"consulta": "¿Sirve un tapabocas para protegerme del PM2.5?", "doc_esperado": "SALUD"},
+  {"consulta": "¿Qué recomienda la OMS como valor guía diario de PM2.5?", "doc_esperado": "OMS2021"},
+  {"consulta": "¿Qué efectos tiene el material particulado fino en la salud?", "doc_esperado": "OMS2021"},
+  {"consulta": "¿De dónde vienen los datos de las estaciones de monitoreo?", "doc_esperado": "SIATA"},
+  {"consulta": "¿Qué estaciones de calidad del aire hay en Itagüí?", "doc_esperado": "SIATA"},
+  {"consulta": "¿Por qué la topografía del valle favorece la acumulación de contaminantes?", "doc_esperado": "METEO"},
+  {"consulta": "¿La lluvia ayuda a limpiar el aire?", "doc_esperado": "METEO"},
+  {"consulta": "¿Cómo funciona el modelo oculto de Markov del proyecto?", "doc_esperado": "METODO"},
+  {"consulta": "¿Qué tan preciso es el pronóstico de mañana comparado con la persistencia?", "doc_esperado": "METODO"}
+]

@@ -1,0 +1,511 @@
+{
+ "hash": "63fd321a25c4fdeb",
+ "modelo": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+ "n_fragmentos": 56,
+ "fragmentos": [
+  {
+   "chunk_id": "METEO-01-0",
+   "doc_id": "METEO",
+   "titulo": "Meteorología y contaminación en el Valle de Aburrá - por qué se acumula el PM2.5",
+   "seccion": "Un valle estrecho y semicerrado",
+   "fuente": "Síntesis elaborada por el equipo a partir de comunicados del AMVA y del SIATA (temporadas críticas), prensa regional (El Colombiano, Caracol Radio, El Tiempo, Minuto30) y del análisis exploratorio de los datos SIATA 2023-2024 y Open-Meteo (reanálisis ERA5) realizado en este proyecto.",
+   "url": "https://siata.gov.co/siata_nuevo/",
+   "texto": "El Valle de Aburrá es una cuenca angosta y semicerrada, rodeada de montañas, de unos 60 km de largo, con el fondo del valle a unos 1.500 metros sobre el nivel del mar en Medellín. Allí viven cerca de cuatro millones de personas en 10 municipios. La topografía limita la ventilación: cuando la atmósfera está estable y hay poco viento, los contaminantes emitidos por vehículos e industrias se quedan dentro de la cuenca y se acumulan día tras día."
+  },
+  {
+   "chunk_id": "METEO-02-0",
+   "doc_id": "METEO",
+   "titulo": "Meteorología y contaminación en el Valle de Aburrá - por qué se acumula el PM2.5",
+   "seccion": "Estabilidad atmosférica, nubes y radiación",
+   "fuente": "Síntesis elaborada por el equipo a partir de comunicados del AMVA y del SIATA (temporadas críticas), prensa regional (El Colombiano, Caracol Radio, El Tiempo, Minuto30) y del análisis exploratorio de los datos SIATA 2023-2024 y Open-Meteo (reanálisis ERA5) realizado en este proyecto.",
+   "url": "https://siata.gov.co/siata_nuevo/",
+   "texto": "En las mañanas, la capa de aire cercana al suelo suele estar fría y estable (inversión térmica), lo que impide que los contaminantes asciendan. La radiación solar calienta el suelo, rompe esa estabilidad y hace crecer la capa de mezcla, que diluye los contaminantes. Cuando hay nubosidad persistente, llega menos radiación, la capa de mezcla crece poco y el PM2.5 se acumula. Esta situación fue la descrita por las autoridades en el estado de alerta de marzo de 2019: la cobertura parcial de nubes impidió el ingreso eficiente de radiación solar y favoreció la acumulación de contaminantes."
+  },
+  {
+   "chunk_id": "METEO-03-0",
+   "doc_id": "METEO",
+   "titulo": "Meteorología y contaminación en el Valle de Aburrá - por qué se acumula el PM2.5",
+   "seccion": "Temporadas críticas: transición seca-lluviosa",
+   "fuente": "Síntesis elaborada por el equipo a partir de comunicados del AMVA y del SIATA (temporadas críticas), prensa regional (El Colombiano, Caracol Radio, El Tiempo, Minuto30) y del análisis exploratorio de los datos SIATA 2023-2024 y Open-Meteo (reanálisis ERA5) realizado en este proyecto.",
+   "url": "https://siata.gov.co/siata_nuevo/",
+   "texto": "El valle tiene un régimen bimodal de lluvias. Las concentraciones de PM2.5 aumentan en dos periodos al año que coinciden con la transición entre la temporada seca y la de lluvias: el primero entre febrero y abril (normalmente el más crítico, con mayor frecuencia en marzo) y el segundo entre octubre y noviembre. En esos meses hay más nubosidad baja, menos radiación en las mañanas y una atmósfera más estable. El SIATA emite pronósticos para estos periodos, por ejemplo de la probabilidad de que cinco o más estaciones pasen a ICA Naranja."
+  },
+  {
+   "chunk_id": "METEO-04-0",
+   "doc_id": "METEO",
+   "titulo": "Meteorología y contaminación en el Valle de Aburrá - por qué se acumula el PM2.5",
+   "seccion": "Papel de la lluvia y del viento",
+   "fuente": "Síntesis elaborada por el equipo a partir de comunicados del AMVA y del SIATA (temporadas críticas), prensa regional (El Colombiano, Caracol Radio, El Tiempo, Minuto30) y del análisis exploratorio de los datos SIATA 2023-2024 y Open-Meteo (reanálisis ERA5) realizado en este proyecto.",
+   "url": "https://siata.gov.co/siata_nuevo/",
+   "texto": "La lluvia remueve partículas de la atmósfera (lavado húmedo) y suele asociarse con mejor calidad del aire en las horas y días siguientes, aunque los días nublados previos a la lluvia pueden ser críticos. El viento ayuda a renovar el aire de la cuenca; en el fondo del valle el viento medio es débil (en el periodo analizado, entre 0,5 y 2,1 m/s de promedio diario según el reanálisis ERA5). El fenómeno de El Niño reduce las lluvias y puede agravar las temporadas críticas, como ocurrió en 2026."
+  },
+  {
+   "chunk_id": "METEO-05-0",
+   "doc_id": "METEO",
+   "titulo": "Meteorología y contaminación en el Valle de Aburrá - por qué se acumula el PM2.5",
+   "seccion": "Ciclo semanal y diario",
+   "fuente": "Síntesis elaborada por el equipo a partir de comunicados del AMVA y del SIATA (temporadas críticas), prensa regional (El Colombiano, Caracol Radio, El Tiempo, Minuto30) y del análisis exploratorio de los datos SIATA 2023-2024 y Open-Meteo (reanálisis ERA5) realizado en este proyecto.",
+   "url": "https://siata.gov.co/siata_nuevo/",
+   "texto": "Las emisiones dependen del tráfico: los domingos y festivos suelen tener menos tráfico pesado y menores concentraciones. En el ciclo diario, las concentraciones suelen ser más altas en la mañana, cuando coinciden la hora pico de tráfico y la atmósfera estable, y bajan en la tarde cuando la capa de mezcla es más profunda."
+  },
+  {
+   "chunk_id": "METEO-06-0",
+   "doc_id": "METEO",
+   "titulo": "Meteorología y contaminación en el Valle de Aburrá - por qué se acumula el PM2.5",
+   "seccion": "Lo que muestran los datos 2023-2024 de este proyecto",
+   "fuente": "Síntesis elaborada por el equipo a partir de comunicados del AMVA y del SIATA (temporadas críticas), prensa regional (El Colombiano, Caracol Radio, El Tiempo, Minuto30) y del análisis exploratorio de los datos SIATA 2023-2024 y Open-Meteo (reanálisis ERA5) realizado en este proyecto.",
+   "url": "https://siata.gov.co/siata_nuevo/",
+   "texto": "- Marzo de 2024 fue el mes más contaminado del periodo (promedio de 30,9 µg/m3 entre estaciones) y concentró la mayoría de días en ICA Naranja; enero, febrero y abril de 2024 también tuvieron días Naranja.\n- La segunda temporada de 2023 (octubre-noviembre) fue moderada: casi todos los días estuvieron en Buena o Aceptable.\n- Mayo a julio de 2024, con más lluvias, fueron los meses más limpios.\n- En el modelo de predicción del día siguiente, las variables más influyentes son la concentración de hoy, su media de 3 días y su tendencia (alta persistencia), y la probabilidad de que el HMM esté en estado \"Episodio crítico\". La lluvia de hoy y que mañana sea domingo reducen la probabilidad de que mañana sea Dañina. Las variables meteorológicas de mañana tomadas del reanálisis tienen efectos pequeños y no siempre en la dirección esperada (por ejemplo, la lluvia de mañana tiene un coeficiente levemente positivo para la clase Dañina, probablemente porque los días de transición son a la vez lluviosos y contaminados), así que deben interpretarse con cautela.\n- El viento medio diario en el punto del reanálisis varió entre 0,5 y 2,1 m/s; la lluvia diaria, entre 0 y 28 mm."
+  },
+  {
+   "chunk_id": "METEO-07-0",
+   "doc_id": "METEO",
+   "titulo": "Meteorología y contaminación en el Valle de Aburrá - por qué se acumula el PM2.5",
+   "seccion": "Advertencia",
+   "fuente": "Síntesis elaborada por el equipo a partir de comunicados del AMVA y del SIATA (temporadas críticas), prensa regional (El Colombiano, Caracol Radio, El Tiempo, Minuto30) y del análisis exploratorio de los datos SIATA 2023-2024 y Open-Meteo (reanálisis ERA5) realizado en este proyecto.",
+   "url": "https://siata.gov.co/siata_nuevo/",
+   "texto": "Las variables meteorológicas usadas por el modelo provienen de un reanálisis global (ERA5) para un único punto del centro del valle; no reemplazan las mediciones locales del SIATA ni sus pronósticos oficiales."
+  },
+  {
+   "chunk_id": "METODO-01-0",
+   "doc_id": "METODO",
+   "titulo": "Metodología de los modelos del proyecto (HMM de estado latente y regresión logística para el día siguiente)",
+   "seccion": "Estado latente con un Modelo Oculto de Markov (HMM)",
+   "fuente": "Documento técnico del equipo del proyecto final SI3003 (EAFIT, 2026). Resultados en reports/metricas_parte1.md.",
+   "url": "https://github.com/Danimuneton/Proyecto_Final_IA",
+   "texto": "La calidad del aire de cada estación se modela con un HMM de 3 estados ocultos: Normal, Alerta y Episodio crítico. La observación de cada día es el logaritmo del PM2.5 promedio diario, con emisión gaussiana por estado. Los parámetros (probabilidades iniciales, matriz de transición, medias y varianzas) se estiman con el algoritmo de Baum-Welch (EM) implementado por el equipo, usando a la vez las secuencias de las 17 estaciones. Los días sin dato válido no aportan evidencia pero la cadena oculta sigue evolucionando. Con el modelo entrenado sobre el año completo, las medias de los estados equivalen a unos 12, 18 y 30 µg/m3, y cada estado tiende a persistir (probabilidad de quedarse en el mismo estado de un día al siguiente cercana a 0,94-0,95).\nEl estado del HMM es un régimen estadístico de la serie, no una declaratoria oficial. Por ejemplo, el estado \"Episodio crítico\" (media cercana a 30 µg/m3) indica un periodo sostenido de concentraciones altas para el valle y aumento del riesgo de días Naranja, aunque muchos de sus días sigan en ICA Amarillo. Las declaratorias oficiales de Prevención, Alerta o Emergencia las hace el AMVA según la Resolución 2254 de 2017."
+  },
+  {
+   "chunk_id": "METODO-01-1",
+   "doc_id": "METODO",
+   "titulo": "Metodología de los modelos del proyecto (HMM de estado latente y regresión logística para el día siguiente)",
+   "seccion": "Estado latente con un Modelo Oculto de Markov (HMM)",
+   "fuente": "Documento técnico del equipo del proyecto final SI3003 (EAFIT, 2026). Resultados en reports/metricas_parte1.md.",
+   "url": "https://github.com/Danimuneton/Proyecto_Final_IA",
+   "texto": "Se usa el filtrado (algoritmo forward), que estima P(estado de hoy | datos hasta hoy) sin mirar el futuro, y Viterbi para la secuencia de estados más probable en las gráficas históricas."
+  },
+  {
+   "chunk_id": "METODO-02-0",
+   "doc_id": "METODO",
+   "titulo": "Metodología de los modelos del proyecto (HMM de estado latente y regresión logística para el día siguiente)",
+   "seccion": "Predicción de la categoría ICA de mañana",
+   "fuente": "Documento técnico del equipo del proyecto final SI3003 (EAFIT, 2026). Resultados en reports/metricas_parte1.md.",
+   "url": "https://github.com/Danimuneton/Proyecto_Final_IA",
+   "texto": "Un clasificador de regresión logística multinomial (softmax), implementado por el equipo con descenso de gradiente (Adam) y regularización L2, predice la categoría del PM2.5 de mañana en una estación: Buena (0-12 µg/m3), Aceptable (13-37) o Dañina para grupos sensibles o peor (38 o más, que coincide con el nivel de Prevención). Variables: PM2.5 de hoy y de ayer (en logaritmo), cambio diario, media de 3 días, promedio del valle, categoría de hoy, probabilidades filtradas del HMM, lluvia de hoy, meteorología de mañana (lluvia, viento, radiación, nubosidad; tomadas del reanálisis ERA5 como si fueran un pronóstico perfecto, o fijadas por el usuario como escenario) y si mañana es domingo.\n\nComo la clase Dañina es poco frecuente (3 % de los días estación del año y 5 % del periodo de prueba), la regla de decisión divide la probabilidad de cada clase por su frecuencia elevada a un exponente alpha. Alpha se elige con una validación interna (últimos 30 días de cada entrenamiento) y resultó 0,5 en la mayoría de meses. Las probabilidades que se muestran al usuario son las del modelo, sin ese ajuste."
+  },
+  {
+   "chunk_id": "METODO-03-0",
+   "doc_id": "METODO",
+   "titulo": "Metodología de los modelos del proyecto (HMM de estado latente y regresión logística para el día siguiente)",
+   "seccion": "Evaluación sin mirar el futuro",
+   "fuente": "Documento técnico del equipo del proyecto final SI3003 (EAFIT, 2026). Resultados en reports/metricas_parte1.md.",
+   "url": "https://github.com/Danimuneton/Proyecto_Final_IA",
+   "texto": "Se usó validación con origen móvil mensual: para cada mes de enero a julio de 2024 se re-entrenan el HMM y el clasificador solo con datos anteriores y se predice cada día del mes (3.309 predicciones estación-día). Líneas base: clase mayoritaria, persistencia (mañana igual a hoy) y cadena de Markov sobre las clases."
+  },
+  {
+   "chunk_id": "METODO-04-0",
+   "doc_id": "METODO",
+   "titulo": "Metodología de los modelos del proyecto (HMM de estado latente y regresión logística para el día siguiente)",
+   "seccion": "Resultados principales",
+   "fuente": "Documento técnico del equipo del proyecto final SI3003 (EAFIT, 2026). Resultados en reports/metricas_parte1.md.",
+   "url": "https://github.com/Danimuneton/Proyecto_Final_IA",
+   "texto": "- Persistencia: exactitud 0,799, exactitud balanceada 0,685, F1 macro 0,684, recall de la clase Dañina 0,60.\n- Modelo final (regresión logística con variables del HMM): exactitud 0,808, exactitud balanceada 0,703, F1 macro 0,686, recall de Dañina 0,63.\n- En probabilidades, el modelo final reduce la pérdida logarítmica de 0,536 (cadena de Markov) a 0,439 y el puntaje de Brier de 0,300 a 0,265; ambas mejoras tienen intervalos de confianza del 95 % que excluyen el cero.\n- Frente a la persistencia, las mejoras en exactitud y F1 macro son pequeñas y sus intervalos de confianza incluyen el cero: la persistencia es una línea base muy fuerte porque el PM2.5 cambia lentamente.\n- El HMM describe mucho mejor los datos que una gaussiana sin dinámica temporal (log-verosimilitud predictiva por observación de -0,20 frente a -0,71 en promedio de los 7 meses) y sus variables mejoran la exactitud balanceada y la pérdida logarítmica del clasificador."
+  },
+  {
+   "chunk_id": "METODO-05-0",
+   "doc_id": "METODO",
+   "titulo": "Metodología de los modelos del proyecto (HMM de estado latente y regresión logística para el día siguiente)",
+   "seccion": "Limitaciones",
+   "fuente": "Documento técnico del equipo del proyecto final SI3003 (EAFIT, 2026). Resultados en reports/metricas_parte1.md.",
+   "url": "https://github.com/Danimuneton/Proyecto_Final_IA",
+   "texto": "- Solo hay un año de datos (julio 2023 a julio 2024) y pocos días Dañinos (172 estación-días); el desempeño en temporadas más severas no está probado.\n- La meteorología de mañana proviene de un reanálisis para un solo punto, usado como pronóstico perfecto; con un pronóstico real el desempeño sería menor.\n- El modelo no conoce incendios forestales, eventos especiales ni medidas de restricción vigentes.\n- Es una herramienta académica de apoyo: no reemplaza los pronósticos del SIATA, las declaratorias del AMVA ni el consejo médico."
+  },
+  {
+   "chunk_id": "OMS2021-01-0",
+   "doc_id": "OMS2021",
+   "titulo": "Guías mundiales de calidad del aire de la OMS (2021) - PM2.5 y efectos en la salud",
+   "seccion": "Qué es el PM2.5",
+   "fuente": "Organización Mundial de la Salud. WHO global air quality guidelines: particulate matter (PM2.5 and PM10), ozone, nitrogen dioxide, sulfur dioxide and carbon monoxide. Ginebra, 2021. Resumen y comparación con la norma colombiana elaborados por el equipo.",
+   "url": "https://iris.who.int/handle/10665/345329",
+   "texto": "El PM2.5 es material particulado con diámetro aerodinámico menor o igual a 2,5 micrómetros (unas 30 veces más delgado que un cabello). Por su tamaño penetra profundamente en los pulmones y una parte llega al torrente sanguíneo. Proviene de la combustión (vehículos, en especial diésel; industria; quemas e incendios forestales) y de reacciones químicas en la atmósfera (aerosoles secundarios). Se mide en microgramos por metro cúbico (µg/m3)."
+  },
+  {
+   "chunk_id": "OMS2021-02-0",
+   "doc_id": "OMS2021",
+   "titulo": "Guías mundiales de calidad del aire de la OMS (2021) - PM2.5 y efectos en la salud",
+   "seccion": "Efectos en la salud",
+   "fuente": "Organización Mundial de la Salud. WHO global air quality guidelines: particulate matter (PM2.5 and PM10), ozone, nitrogen dioxide, sulfur dioxide and carbon monoxide. Ginebra, 2021. Resumen y comparación con la norma colombiana elaborados por el equipo.",
+   "url": "https://iris.who.int/handle/10665/345329",
+   "texto": "La exposición a PM2.5 se asocia con enfermedades respiratorias (crisis de asma, bronquitis, menor función pulmonar), cardiovasculares (infarto, accidente cerebrovascular), cáncer de pulmón y mortalidad prematura. La exposición de corto plazo (horas o días) agrava síntomas y aumenta consultas y hospitalizaciones; la de largo plazo (años) aumenta el riesgo de enfermedad crónica. La OMS considera que no hay un umbral por debajo del cual no se observen efectos: reducir la concentración siempre trae beneficios. La OMS estima que la contaminación del aire ambiente causó alrededor de 4,2 millones de muertes prematuras en el mundo en 2019."
+  },
+  {
+   "chunk_id": "OMS2021-03-0",
+   "doc_id": "OMS2021",
+   "titulo": "Guías mundiales de calidad del aire de la OMS (2021) - PM2.5 y efectos en la salud",
+   "seccion": "Niveles guía de la OMS 2021 para PM2.5",
+   "fuente": "Organización Mundial de la Salud. WHO global air quality guidelines: particulate matter (PM2.5 and PM10), ozone, nitrogen dioxide, sulfur dioxide and carbon monoxide. Ginebra, 2021. Resumen y comparación con la norma colombiana elaborados por el equipo.",
+   "url": "https://iris.who.int/handle/10665/345329",
+   "texto": "- Promedio anual: 5 µg/m3.\n- Promedio de 24 horas: 15 µg/m3, expresado como percentil 99 (equivale a no superarlo más de 3 o 4 días al año).\nEstos valores son más estrictos que los de la guía de 2005 (10 µg/m3 anual y 25 µg/m3 en 24 horas)."
+  },
+  {
+   "chunk_id": "OMS2021-04-0",
+   "doc_id": "OMS2021",
+   "titulo": "Guías mundiales de calidad del aire de la OMS (2021) - PM2.5 y efectos en la salud",
+   "seccion": "Metas intermedias de la OMS para PM2.5",
+   "fuente": "Organización Mundial de la Salud. WHO global air quality guidelines: particulate matter (PM2.5 and PM10), ozone, nitrogen dioxide, sulfur dioxide and carbon monoxide. Ginebra, 2021. Resumen y comparación con la norma colombiana elaborados por el equipo.",
+   "url": "https://iris.who.int/handle/10665/345329",
+   "texto": "La OMS define metas intermedias para que los países reduzcan la exposición de forma progresiva:\n- Anual: meta 1 = 35, meta 2 = 25, meta 3 = 15, meta 4 = 10 µg/m3; nivel guía = 5 µg/m3.\n- 24 horas: meta 1 = 75, meta 2 = 50, meta 3 = 37,5, meta 4 = 25 µg/m3; nivel guía = 15 µg/m3."
+  },
+  {
+   "chunk_id": "OMS2021-05-0",
+   "doc_id": "OMS2021",
+   "titulo": "Guías mundiales de calidad del aire de la OMS (2021) - PM2.5 y efectos en la salud",
+   "seccion": "Comparación con la norma colombiana (Resolución 2254 de 2017)",
+   "fuente": "Organización Mundial de la Salud. WHO global air quality guidelines: particulate matter (PM2.5 and PM10), ozone, nitrogen dioxide, sulfur dioxide and carbon monoxide. Ginebra, 2021. Resumen y comparación con la norma colombiana elaborados por el equipo.",
+   "url": "https://iris.who.int/handle/10665/345329",
+   "texto": "- PM2.5 en 24 horas: la norma colombiana vigente es 37 µg/m3, equivalente a la meta intermedia 3 de la OMS (37,5) y unas 2,5 veces el nivel guía de 15 µg/m3.\n- PM2.5 anual: la norma vigente es 25 µg/m3 (meta intermedia 2) y desde 2030 será 15 µg/m3 (meta intermedia 3), frente al nivel guía de 5 µg/m3.\nPor lo tanto, un día con ICA Amarillo (Aceptable) en Colombia, por ejemplo con 30 µg/m3, cumple la norma nacional pero duplica el nivel guía diario de la OMS. Esto explica por qué en días \"aceptables\" las personas sensibles pueden tener síntomas."
+  },
+  {
+   "chunk_id": "OMS2021-06-0",
+   "doc_id": "OMS2021",
+   "titulo": "Guías mundiales de calidad del aire de la OMS (2021) - PM2.5 y efectos en la salud",
+   "seccion": "Uso de las guías",
+   "fuente": "Organización Mundial de la Salud. WHO global air quality guidelines: particulate matter (PM2.5 and PM10), ozone, nitrogen dioxide, sulfur dioxide and carbon monoxide. Ginebra, 2021. Resumen y comparación con la norma colombiana elaborados por el equipo.",
+   "url": "https://iris.who.int/handle/10665/345329",
+   "texto": "Las guías de la OMS no son normas jurídicamente vinculantes; son recomendaciones basadas en evidencia para que los gobiernos fijen sus normas. En Colombia la norma obligatoria es la Resolución 2254 de 2017."
+  },
+  {
+   "chunk_id": "POECA-01-0",
+   "doc_id": "POECA",
+   "titulo": "POECA - Plan Operacional para Enfrentar Episodios de Contaminación Atmosférica en el Valle de Aburrá (resumen)",
+   "seccion": "Qué es el POECA",
+   "fuente": "Área Metropolitana del Valle de Aburrá (AMVA). Acuerdo Metropolitano N.° 04 de 2018 y comunicados oficiales; resumen elaborado por el equipo a partir de fuentes públicas.",
+   "url": "https://www.metropol.gov.co/ambiental/calidad-del-aire",
+   "texto": "El POECA (Plan Operacional para Enfrentar Episodios de Contaminación Atmosférica) es el protocolo con el que el Área Metropolitana del Valle de Aburrá (AMVA), como autoridad ambiental urbana de los 10 municipios del valle, gestiona los episodios de contaminación del aire. Fue adoptado mediante el Acuerdo Metropolitano N.° 04 de 2018, ajustado a la norma nacional de calidad del aire (Resolución 2254 de 2017), y se enfoca en los episodios de material particulado PM2.5. El POECA hace parte del Plan Integral de Gestión de la Calidad del Aire (PIGECA), que contiene las metas y medidas de largo plazo para descontaminar el aire del valle."
+  },
+  {
+   "chunk_id": "POECA-02-0",
+   "doc_id": "POECA",
+   "titulo": "POECA - Plan Operacional para Enfrentar Episodios de Contaminación Atmosférica en el Valle de Aburrá (resumen)",
+   "seccion": "Municipios de la jurisdicción",
+   "fuente": "Área Metropolitana del Valle de Aburrá (AMVA). Acuerdo Metropolitano N.° 04 de 2018 y comunicados oficiales; resumen elaborado por el equipo a partir de fuentes públicas.",
+   "url": "https://www.metropol.gov.co/ambiental/calidad-del-aire",
+   "texto": "El Valle de Aburrá está conformado por 10 municipios: Barbosa, Girardota, Copacabana, Bello, Medellín, Itagüí, Envigado, Sabaneta, La Estrella y Caldas. El AMVA es la autoridad ambiental en los cascos urbanos; Corantioquia vigila la periferia rural de estos municipios."
+  },
+  {
+   "chunk_id": "POECA-03-0",
+   "doc_id": "POECA",
+   "titulo": "POECA - Plan Operacional para Enfrentar Episodios de Contaminación Atmosférica en el Valle de Aburrá (resumen)",
+   "seccion": "Periodos de gestión de episodios (temporadas críticas)",
+   "fuente": "Área Metropolitana del Valle de Aburrá (AMVA). Acuerdo Metropolitano N.° 04 de 2018 y comunicados oficiales; resumen elaborado por el equipo a partir de fuentes públicas.",
+   "url": "https://www.metropol.gov.co/ambiental/calidad-del-aire",
+   "texto": "Cada año el valle presenta dos temporadas en las que aumenta la probabilidad de episodios de contaminación, asociadas a la transición entre la temporada seca y la de lluvias: la primera aproximadamente entre febrero y abril, y la segunda entre octubre y noviembre. En esas épocas la atmósfera es más estable, hay más nubosidad baja y menos radiación solar en las mañanas, lo que dificulta que los contaminantes asciendan y se dispersen. El AMVA declara por resolución un \"periodo de gestión de episodios\" con medidas preventivas. Ejemplos: en 2018 se declaró el Estado de Prevención entre el 23 de febrero y el 7 de abril; en 2026 el primer periodo de gestión fue del 23 de febrero al 21 de marzo y el segundo, definido por la Resolución Metropolitana 3101 de 2026, del 13 al 24 de octubre, en un año con fenómeno de El Niño, que reduce las lluvias que ayudan a limpiar la atmósfera."
+  },
+  {
+   "chunk_id": "POECA-04-0",
+   "doc_id": "POECA",
+   "titulo": "POECA - Plan Operacional para Enfrentar Episodios de Contaminación Atmosférica en el Valle de Aburrá (resumen)",
+   "seccion": "Niveles del POECA y su relación con el ICA",
+   "fuente": "Área Metropolitana del Valle de Aburrá (AMVA). Acuerdo Metropolitano N.° 04 de 2018 y comunicados oficiales; resumen elaborado por el equipo a partir de fuentes públicas.",
+   "url": "https://www.metropol.gov.co/ambiental/calidad-del-aire",
+   "texto": "El POECA usa los niveles de la Resolución 2254 de 2017 para PM2.5 en 24 horas:\n- Nivel de Prevención: concentraciones de 38 a 55 µg/m3, que corresponden al ICA Naranja (Dañina a la salud de grupos sensibles).\n- Nivel de Alerta: concentraciones de 56 a 150 µg/m3, ICA Rojo (Dañina a la salud).\n- Nivel de Emergencia: 151 µg/m3 o más, ICA Púrpura o superior.\nLa declaratoria considera cuántas estaciones de representatividad poblacional están en cada nivel y los pronósticos del SIATA. Por ejemplo, el 5 de marzo de 2019 el AMVA declaró el Estado de Alerta del 6 al 8 de marzo, cuando 16 de las 19 estaciones de PM2.5 consideradas en el POECA registraban ICA Naranja y se esperaba que las condiciones meteorológicas persistieran. En la gestión de 2026 el criterio de seguimiento fue, entre otros, que cinco o más estaciones de monitoreo pasaran a color Naranja; cuando las estaciones oscilaron entre Verde y Amarillo no fue necesario declarar el nivel de prevención."
+  },
+  {
+   "chunk_id": "POECA-05-0",
+   "doc_id": "POECA",
+   "titulo": "POECA - Plan Operacional para Enfrentar Episodios de Contaminación Atmosférica en el Valle de Aburrá (resumen)",
+   "seccion": "Medidas típicas durante los episodios",
+   "fuente": "Área Metropolitana del Valle de Aburrá (AMVA). Acuerdo Metropolitano N.° 04 de 2018 y comunicados oficiales; resumen elaborado por el equipo a partir de fuentes públicas.",
+   "url": "https://www.metropol.gov.co/ambiental/calidad-del-aire",
+   "texto": "Las medidas dependen del nivel declarado y de la resolución metropolitana vigente. Entre las que el AMVA y los municipios han aplicado se encuentran:\n- Medidas preventivas e institucionales: intensificar controles a vehículos con emisiones visibles (especialmente camiones, volquetas y transporte de carga), visitas de inspección a industrias, calderas, hornos y canteras, y coordinación con las secretarías de tránsito y de salud.\n- Restricciones a la movilidad en niveles más altos: ampliación temporal del pico y placa (\"pico y placa ambiental\") para vehículos particulares y motocicletas, restricciones al transporte de carga en ciertas franjas, y promoción de la bicicleta, los desplazamientos activos y el teletrabajo.\n- Restricciones a actividades: limitación de quemas, de actividades físicas masivas al aire libre y de eventos deportivos en horas de mayor concentración, y recomendaciones a instituciones educativas sobre actividades al aire libre."
+  },
+  {
+   "chunk_id": "POECA-05-1",
+   "doc_id": "POECA",
+   "titulo": "POECA - Plan Operacional para Enfrentar Episodios de Contaminación Atmosférica en el Valle de Aburrá (resumen)",
+   "seccion": "Medidas típicas durante los episodios",
+   "fuente": "Área Metropolitana del Valle de Aburrá (AMVA). Acuerdo Metropolitano N.° 04 de 2018 y comunicados oficiales; resumen elaborado por el equipo a partir de fuentes públicas.",
+   "url": "https://www.metropol.gov.co/ambiental/calidad-del-aire",
+   "texto": "- Comunicación del riesgo: divulgación del ICA por estación y de recomendaciones de salud a la ciudadanía.\nAl inicio de un periodo de gestión las medidas suelen ser preventivas y de control institucional, sin restricciones generales para la ciudadanía; las restricciones obligatorias se activan solo si se declara el nivel correspondiente."
+  },
+  {
+   "chunk_id": "POECA-06-0",
+   "doc_id": "POECA",
+   "titulo": "POECA - Plan Operacional para Enfrentar Episodios de Contaminación Atmosférica en el Valle de Aburrá (resumen)",
+   "seccion": "Principales fuentes de PM2.5 en el valle",
+   "fuente": "Área Metropolitana del Valle de Aburrá (AMVA). Acuerdo Metropolitano N.° 04 de 2018 y comunicados oficiales; resumen elaborado por el equipo a partir de fuentes públicas.",
+   "url": "https://www.metropol.gov.co/ambiental/calidad-del-aire",
+   "texto": "De acuerdo con los inventarios de emisiones del AMVA y con lo comunicado por las autoridades en los periodos de gestión, la mayor parte del PM2.5 emitido en el valle proviene de fuentes móviles, principalmente camiones pesados y volquetas que usan diésel, y en segundo lugar de fuentes fijas como industrias que usan calderas. Por eso las medidas de los episodios se concentran en el transporte de carga, la movilidad y el control industrial."
+  },
+  {
+   "chunk_id": "POECA-07-0",
+   "doc_id": "POECA",
+   "titulo": "POECA - Plan Operacional para Enfrentar Episodios de Contaminación Atmosférica en el Valle de Aburrá (resumen)",
+   "seccion": "Qué debe hacer la ciudadanía",
+   "fuente": "Área Metropolitana del Valle de Aburrá (AMVA). Acuerdo Metropolitano N.° 04 de 2018 y comunicados oficiales; resumen elaborado por el equipo a partir de fuentes públicas.",
+   "url": "https://www.metropol.gov.co/ambiental/calidad-del-aire",
+   "texto": "Consultar el ICA de la estación más cercana en el SIATA o en los canales del AMVA, seguir las recomendaciones de salud según el color del ICA, preferir el transporte público, la bicicleta o caminar, compartir el vehículo, evitar quemas y atender las restricciones que declare la autoridad. Las decisiones oficiales (niveles, restricciones, horarios) las define el AMVA mediante resolución; esta guía no las reemplaza."
+  },
+  {
+   "chunk_id": "SALUD-01-0",
+   "doc_id": "SALUD",
+   "titulo": "Recomendaciones de salud según el Índice de Calidad del Aire para PM2.5",
+   "seccion": "Grupos sensibles al material particulado",
+   "fuente": "Síntesis elaborada por el equipo a partir de la Resolución 2254 de 2017 (Tabla 5, efectos por categoría del ICA) y de la guía de la Agencia de Protección Ambiental de EE. UU. (US EPA, AirNow) \"Air Quality Guide for Particle Pollution\".",
+   "url": "https://document.airnow.gov/air-quality-guide-for-particle-pollution.pdf",
+   "texto": "La Resolución 2254 de 2017 considera sensibles al material particulado a las personas con enfermedad cardíaca o pulmonar, a los adultos mayores y a los niños. La guía de la EPA agrega a los adolescentes, las mujeres gestantes y los trabajadores al aire libre, y menciona expresamente el asma y la enfermedad pulmonar obstructiva crónica (EPOC). Las autoridades del Valle de Aburrá también mencionan a las mujeres gestantes entre los grupos sensibles. Las personas que hacen ejercicio intenso o trabajan al aire libre reciben una dosis mayor de contaminantes porque respiran más aire."
+  },
+  {
+   "chunk_id": "SALUD-02-0",
+   "doc_id": "SALUD",
+   "titulo": "Recomendaciones de salud según el Índice de Calidad del Aire para PM2.5",
+   "seccion": "ICA Verde - Buena (PM2.5 de 0 a 12 µg/m3)",
+   "fuente": "Síntesis elaborada por el equipo a partir de la Resolución 2254 de 2017 (Tabla 5, efectos por categoría del ICA) y de la guía de la Agencia de Protección Ambiental de EE. UU. (US EPA, AirNow) \"Air Quality Guide for Particle Pollution\".",
+   "url": "https://document.airnow.gov/air-quality-guide-for-particle-pollution.pdf",
+   "texto": "La contaminación supone un riesgo bajo para la salud. Es un buen momento para realizar actividades al aire libre. No se requieren precauciones especiales."
+  },
+  {
+   "chunk_id": "SALUD-03-0",
+   "doc_id": "SALUD",
+   "titulo": "Recomendaciones de salud según el Índice de Calidad del Aire para PM2.5",
+   "seccion": "ICA Amarillo - Aceptable (PM2.5 de 13 a 37 µg/m3)",
+   "fuente": "Síntesis elaborada por el equipo a partir de la Resolución 2254 de 2017 (Tabla 5, efectos por categoría del ICA) y de la guía de la Agencia de Protección Ambiental de EE. UU. (US EPA, AirNow) \"Air Quality Guide for Particle Pollution\".",
+   "url": "https://document.airnow.gov/air-quality-guide-for-particle-pollution.pdf",
+   "texto": "La calidad del aire es aceptable, pero pueden presentarse síntomas respiratorios en grupos sensibles. Las personas inusualmente sensibles deberían considerar reducir las actividades prolongadas o intensas al aire libre y estar atentas a síntomas como tos o dificultad para respirar. La población general puede realizar sus actividades normalmente."
+  },
+  {
+   "chunk_id": "SALUD-04-0",
+   "doc_id": "SALUD",
+   "titulo": "Recomendaciones de salud según el Índice de Calidad del Aire para PM2.5",
+   "seccion": "ICA Naranja - Dañina a la salud de grupos sensibles (PM2.5 de 38 a 55 µg/m3)",
+   "fuente": "Síntesis elaborada por el equipo a partir de la Resolución 2254 de 2017 (Tabla 5, efectos por categoría del ICA) y de la guía de la Agencia de Protección Ambiental de EE. UU. (US EPA, AirNow) \"Air Quality Guide for Particle Pollution\".",
+   "url": "https://document.airnow.gov/air-quality-guide-for-particle-pollution.pdf",
+   "texto": "Los grupos sensibles pueden presentar efectos sobre la salud. Recomendaciones para grupos sensibles: reducir las actividades prolongadas o intensas al aire libre; está bien estar afuera, pero tomando más descansos y haciendo actividades menos intensas; vigilar síntomas como tos o falta de aire. Las personas con asma deben seguir su plan de acción y tener a mano su medicamento de rescate. Las personas con enfermedad cardíaca deben consultar al médico si presentan palpitaciones, falta de aire o fatiga inusual. La población general normalmente no se ve afectada. Este rango coincide con el Nivel de Prevención de la Resolución 2254."
+  },
+  {
+   "chunk_id": "SALUD-05-0",
+   "doc_id": "SALUD",
+   "titulo": "Recomendaciones de salud según el Índice de Calidad del Aire para PM2.5",
+   "seccion": "ICA Rojo - Dañina a la salud (PM2.5 de 56 a 150 µg/m3)",
+   "fuente": "Síntesis elaborada por el equipo a partir de la Resolución 2254 de 2017 (Tabla 5, efectos por categoría del ICA) y de la guía de la Agencia de Protección Ambiental de EE. UU. (US EPA, AirNow) \"Air Quality Guide for Particle Pollution\".",
+   "url": "https://document.airnow.gov/air-quality-guide-for-particle-pollution.pdf",
+   "texto": "Todos pueden comenzar a experimentar efectos; los grupos sensibles, efectos más graves. Grupos sensibles: evitar las actividades prolongadas o intensas al aire libre y considerar realizar las actividades bajo techo o reprogramarlas. Población general: reducir las actividades prolongadas o intensas al aire libre y tomar más descansos. Coincide con el Nivel de Alerta de la Resolución 2254."
+  },
+  {
+   "chunk_id": "SALUD-06-0",
+   "doc_id": "SALUD",
+   "titulo": "Recomendaciones de salud según el Índice de Calidad del Aire para PM2.5",
+   "seccion": "ICA Púrpura - Muy dañina a la salud (PM2.5 de 151 a 250 µg/m3)",
+   "fuente": "Síntesis elaborada por el equipo a partir de la Resolución 2254 de 2017 (Tabla 5, efectos por categoría del ICA) y de la guía de la Agencia de Protección Ambiental de EE. UU. (US EPA, AirNow) \"Air Quality Guide for Particle Pollution\".",
+   "url": "https://document.airnow.gov/air-quality-guide-for-particle-pollution.pdf",
+   "texto": "Estado de alerta sanitaria: todos pueden experimentar efectos más graves. Grupos sensibles: evitar toda actividad física al aire libre y permanecer en interiores con baja actividad. Población general: evitar las actividades prolongadas o intensas al aire libre. Coincide con el Nivel de Emergencia de la Resolución 2254."
+  },
+  {
+   "chunk_id": "SALUD-07-0",
+   "doc_id": "SALUD",
+   "titulo": "Recomendaciones de salud según el Índice de Calidad del Aire para PM2.5",
+   "seccion": "ICA Marrón - Peligrosa (PM2.5 de 251 a 500 µg/m3)",
+   "fuente": "Síntesis elaborada por el equipo a partir de la Resolución 2254 de 2017 (Tabla 5, efectos por categoría del ICA) y de la guía de la Agencia de Protección Ambiental de EE. UU. (US EPA, AirNow) \"Air Quality Guide for Particle Pollution\".",
+   "url": "https://document.airnow.gov/air-quality-guide-for-particle-pollution.pdf",
+   "texto": "Advertencia sanitaria de condiciones de emergencia: toda la población puede presentar efectos adversos graves. Todos deben evitar la actividad física al aire libre; los grupos sensibles deben permanecer en interiores y mantener un nivel de actividad bajo."
+  },
+  {
+   "chunk_id": "SALUD-08-0",
+   "doc_id": "SALUD",
+   "titulo": "Recomendaciones de salud según el Índice de Calidad del Aire para PM2.5",
+   "seccion": "Medidas generales para reducir la exposición",
+   "fuente": "Síntesis elaborada por el equipo a partir de la Resolución 2254 de 2017 (Tabla 5, efectos por categoría del ICA) y de la guía de la Agencia de Protección Ambiental de EE. UU. (US EPA, AirNow) \"Air Quality Guide for Particle Pollution\".",
+   "url": "https://document.airnow.gov/air-quality-guide-for-particle-pollution.pdf",
+   "texto": "- Consultar el ICA de la estación más cercana antes de planear ejercicio o actividades al aire libre, en especial en las temporadas críticas (febrero-abril y octubre-noviembre).\n- Preferir horas y lugares con menor tráfico para hacer ejercicio; la concentración de PM2.5 suele ser mayor cerca de vías con mucho tráfico pesado y en las mañanas de días con atmósfera estable.\n- En episodios, mantener puertas y ventanas cerradas en horas de mayor concentración y evitar fuentes de humo en interiores (velas, cigarrillo, quemas).\n- Un tapabocas de uso común reduce poco la exposición a partículas finas; los respiradores certificados (tipo N95 o similares) bien ajustados filtran mejor, pero no son adecuados para todas las personas (por ejemplo, algunos pacientes cardíacos o respiratorios); consulte a su médico.\n- Buscar atención médica si aparecen dificultad para respirar, dolor en el pecho, sibilancias o palpitaciones."
+  },
+  {
+   "chunk_id": "SALUD-09-0",
+   "doc_id": "SALUD",
+   "titulo": "Recomendaciones de salud según el Índice de Calidad del Aire para PM2.5",
+   "seccion": "Advertencia",
+   "fuente": "Síntesis elaborada por el equipo a partir de la Resolución 2254 de 2017 (Tabla 5, efectos por categoría del ICA) y de la guía de la Agencia de Protección Ambiental de EE. UU. (US EPA, AirNow) \"Air Quality Guide for Particle Pollution\".",
+   "url": "https://document.airnow.gov/air-quality-guide-for-particle-pollution.pdf",
+   "texto": "Estas recomendaciones son orientativas y de carácter general, basadas en guías de autoridades ambientales y de salud. No constituyen diagnóstico ni tratamiento médico. Las decisiones de salud individuales deben tomarse con un profesional de la salud."
+  },
+  {
+   "chunk_id": "RES2254-01-0",
+   "doc_id": "RES2254",
+   "titulo": "Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible - Norma de calidad del aire ambiente",
+   "seccion": "Objeto (Artículo 1)",
+   "fuente": "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente), Colombia. 1 de noviembre de 2017.",
+   "url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/Resolucion-2254-de-2017.pdf",
+   "texto": "La Resolución establece la norma de calidad del aire o nivel de inmisión y adopta disposiciones para la gestión del recurso aire en el territorio nacional, con el objeto de garantizar un ambiente sano y minimizar el riesgo sobre la salud humana que pueda ser causado por la exposición a los contaminantes en la atmósfera."
+  },
+  {
+   "chunk_id": "RES2254-02-0",
+   "doc_id": "RES2254",
+   "titulo": "Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible - Norma de calidad del aire ambiente",
+   "seccion": "Niveles máximos permisibles vigentes desde 2018 (Artículo 2, Tabla 1)",
+   "fuente": "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente), Colombia. 1 de noviembre de 2017.",
+   "url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/Resolucion-2254-de-2017.pdf",
+   "texto": "Niveles máximos permisibles a condiciones de referencia para contaminantes criterio que rigen a partir del 1 de enero de 2018:\n- PM10: 50 µg/m3 promedio anual; 100 µg/m3 en 24 horas.\n- PM2.5: 25 µg/m3 promedio anual; 50 µg/m3 en 24 horas.\n- SO2: 50 µg/m3 en 24 horas; 100 µg/m3 en 1 hora.\n- NO2: 60 µg/m3 anual; 200 µg/m3 en 1 hora.\n- O3: 100 µg/m3 en 8 horas.\n- CO: 5.000 µg/m3 en 8 horas; 35.000 µg/m3 en 1 hora.\n\nParágrafo 1: A partir del 1 de julio de 2018, los niveles máximos permisibles de PM10 y PM2.5 para un tiempo de exposición de 24 horas son de 75 µg/m3 y 37 µg/m3 respectivamente. Por lo tanto, el nivel máximo permisible vigente de PM2.5 en 24 horas es 37 µg/m3 y el anual es 25 µg/m3.\n\nParágrafo 2: Para verificar el cumplimiento de los niveles máximos permisibles, la concentración de los contaminantes debe evaluarse por cada punto de monitoreo. El promedio de concentraciones de diferentes puntos de monitoreo no es válido para evaluar el cumplimiento de dichos niveles."
+  },
+  {
+   "chunk_id": "RES2254-03-0",
+   "doc_id": "RES2254",
+   "titulo": "Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible - Norma de calidad del aire ambiente",
+   "seccion": "Niveles máximos permisibles a 2030 (Artículo 3, Tabla 2)",
+   "fuente": "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente), Colombia. 1 de noviembre de 2017.",
+   "url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/Resolucion-2254-de-2017.pdf",
+   "texto": "A partir del 1 de enero de 2030 rigen niveles más estrictos: PM10 30 µg/m3 anual; PM2.5 15 µg/m3 anual; SO2 20 µg/m3 en 24 horas; NO2 40 µg/m3 anual. Para los contaminantes y tiempos de exposición que no aparecen en la Tabla 2 se mantienen los de la Tabla 1 (por ejemplo, PM2.5 en 24 horas sigue en 37 µg/m3)."
+  },
+  {
+   "chunk_id": "RES2254-04-0",
+   "doc_id": "RES2254",
+   "titulo": "Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible - Norma de calidad del aire ambiente",
+   "seccion": "Información a las autoridades de salud (Artículo 6, Parágrafo 2)",
+   "fuente": "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente), Colombia. 1 de noviembre de 2017.",
+   "url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/Resolucion-2254-de-2017.pdf",
+   "texto": "Cuando las concentraciones de contaminantes del aire excedan los niveles máximos permisibles, las autoridades ambientales competentes informarán a las autoridades de salud y demás organismos responsables de la gestión del riesgo para que adopten las medidas a que haya lugar, entre ellas la divulgación de medidas para reducir la exposición."
+  },
+  {
+   "chunk_id": "RES2254-05-0",
+   "doc_id": "RES2254",
+   "titulo": "Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible - Norma de calidad del aire ambiente",
+   "seccion": "Monitoreo en tiempo real en puntos críticos (Artículo 7)",
+   "fuente": "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente), Colombia. 1 de noviembre de 2017.",
+   "url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/Resolucion-2254-de-2017.pdf",
+   "texto": "Desde el 1 de enero de 2018 las autoridades ambientales deben incorporar gradualmente equipos automáticos que permitan el monitoreo en tiempo real de los contaminantes de interés en zonas identificadas como puntos críticos o de alta concentración, con fecha límite del 31 de diciembre de 2022 para esta modernización."
+  },
+  {
+   "chunk_id": "RES2254-06-0",
+   "doc_id": "RES2254",
+   "titulo": "Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible - Norma de calidad del aire ambiente",
+   "seccion": "Declaratoria de niveles de prevención, alerta o emergencia (Artículos 9 y 10, Tabla 4)",
+   "fuente": "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente), Colombia. 1 de noviembre de 2017.",
+   "url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/Resolucion-2254-de-2017.pdf",
+   "texto": "La declaratoria de los niveles de prevención, alerta o emergencia corresponde a las autoridades ambientales competentes, con el fin de tomar medidas integrales de control de la contaminación y de reducción de la exposición, y debe hacerse de manera coordinada con los organismos de gestión del riesgo departamentales, municipales y distritales.\n\nConcentraciones (µg/m3) para declarar los niveles (Tabla 4):\n- PM10, 24 horas: Prevención 155-254; Alerta 255-354; Emergencia mayor o igual a 355.\n- PM2.5, 24 horas: Prevención 38-55; Alerta 56-150; Emergencia mayor o igual a 151.\n- O3, 8 horas: Prevención 139-167; Alerta 168-207; Emergencia mayor o igual a 208.\n- SO2, 1 hora: Prevención 198-486; Alerta 487-797; Emergencia mayor o igual a 798.\n- NO2, 1 hora: Prevención 190-677; Alerta 678-1221; Emergencia mayor o igual a 1222.\n- CO, 8 horas: Prevención 10820-14254; Alerta 14255-17688; Emergencia mayor o igual a 17689.\nLas declaraciones por PM2.5 son aplicables desde el 1 de julio de 2018. Cuando en un mismo punto se miden varios contaminantes, prevalecen las concentraciones más críticas."
+  },
+  {
+   "chunk_id": "RES2254-07-0",
+   "doc_id": "RES2254",
+   "titulo": "Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible - Norma de calidad del aire ambiente",
+   "seccion": "Cálculo de los niveles por constatación y por pronóstico (Artículo 11)",
+   "fuente": "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente), Colombia. 1 de noviembre de 2017.",
+   "url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/Resolucion-2254-de-2017.pdf",
+   "texto": "Por constatación: se usan medias móviles de 24 horas del contaminante (monitoreo automático) o el valor de 24 horas (monitoreo manual). Si con medias móviles se reporta un valor dentro de alguno de los rangos de prevención, alerta o emergencia, se hace seguimiento horario; si durante las 48 horas siguientes las medias móviles permanecen en el mismo rango más del 75 % del tiempo, se debe declarar el nivel correspondiente. En monitoreo manual, si dos datos consecutivos adicionales están dentro del rango, se declara el nivel.\n\nPor pronóstico: se puede declarar un nivel con anticipación cuando el modelo de pronóstico indique dicha condición, teniendo en cuenta la representatividad espacial. El modelo debe estar calibrado y probado como herramienta válida bajo condiciones meteorológicas específicas. La declaración debe considerar los datos de calidad del aire y meteorológicos más actualizados y estar acompañada de un informe técnico."
+  },
+  {
+   "chunk_id": "RES2254-08-0",
+   "doc_id": "RES2254",
+   "titulo": "Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible - Norma de calidad del aire ambiente",
+   "seccion": "Representatividad espacial (Artículo 12)",
+   "fuente": "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente), Colombia. 1 de noviembre de 2017.",
+   "url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/Resolucion-2254-de-2017.pdf",
+   "texto": "La declaratoria de un nivel en la totalidad de un municipio o centro urbano se realiza con base en la información de como mínimo el 50 % del total de estaciones de monitoreo instaladas para el contaminante. Los puntos de monitoreo que de forma individual presenten condiciones para la declaratoria pueden declararse con base en sus propios datos."
+  },
+  {
+   "chunk_id": "RES2254-09-0",
+   "doc_id": "RES2254",
+   "titulo": "Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible - Norma de calidad del aire ambiente",
+   "seccion": "Finalización o re-categorización de los niveles (Artículo 13)",
+   "fuente": "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente), Colombia. 1 de noviembre de 2017.",
+   "url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/Resolucion-2254-de-2017.pdf",
+   "texto": "Para finalizar el estado excepcional se analiza la serie durante el evento. Si después de la declaratoria las medias móviles bajan del límite inferior del rango del nivel y, durante 48 horas seguidas, más del 75 % del tiempo permanecen por debajo de ese límite, se da por finalizado el estado de excepción o se re-categoriza al nivel que corresponda."
+  },
+  {
+   "chunk_id": "RES2254-10-0",
+   "doc_id": "RES2254",
+   "titulo": "Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible - Norma de calidad del aire ambiente",
+   "seccion": "Medidas en programas de reducción de la contaminación (Artículo 15)",
+   "fuente": "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente), Colombia. 1 de noviembre de 2017.",
+   "url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/Resolucion-2254-de-2017.pdf",
+   "texto": "En zonas que exceden la norma, la autoridad ambiental debe elaborar un programa de reducción de la contaminación. Entre las medidas a considerar: renovación del parque automotor con tecnologías de cero y bajas emisiones; seguimiento a fuentes fijas y móviles; modernización del monitoreo; planes de movilidad; estímulos a vehículos eléctricos; mantenimiento preventivo vehicular; control de emisiones en obras; control de la resuspensión de partículas; tecnologías más limpias en la industria; mantenimiento de vías; integración de políticas de desarrollo urbano, transporte y calidad del aire; educación ambiental; prevención a la población respecto a la exposición a niveles altos de contaminación; reforestación y ampliación de áreas verdes."
+  },
+  {
+   "chunk_id": "RES2254-11-0",
+   "doc_id": "RES2254",
+   "titulo": "Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible - Norma de calidad del aire ambiente",
+   "seccion": "Índice de Calidad del Aire - ICA (Artículos 18 y 19, Tabla 5)",
+   "fuente": "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente), Colombia. 1 de noviembre de 2017.",
+   "url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/Resolucion-2254-de-2017.pdf",
+   "texto": "El ICA es un valor adimensional para reportar el estado de la calidad del aire en función de un código de colores al que están asociados unos efectos generales que deben tenerse en cuenta para reducir la exposición de la población a altas concentraciones. También se usa en el pronóstico de la calidad del aire.\nDescripción general del ICA (Tabla 5):\n- 0-50, Verde, Buena: la contaminación atmosférica supone un riesgo bajo para la salud.\n- 51-100, Amarillo, Aceptable: posibles síntomas respiratorios en grupos poblacionales sensibles.\n- 101-150, Naranja, Dañina a la salud de grupos sensibles: los grupos sensibles pueden presentar efectos sobre la salud. Para material particulado, las personas con enfermedad cardíaca o pulmonar, los adultos mayores y los niños se consideran sensibles y por lo tanto en mayor riesgo.\n- 151-200, Rojo, Dañina a la salud: todos los individuos pueden comenzar a experimentar efectos sobre la salud; los grupos sensibles pueden experimentar efectos más graves.\n- 201-300, Púrpura, Muy dañina a la salud: estado de alerta que significa que todos pueden experimentar efectos más graves para la salud."
+  },
+  {
+   "chunk_id": "RES2254-11-1",
+   "doc_id": "RES2254",
+   "titulo": "Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible - Norma de calidad del aire ambiente",
+   "seccion": "Índice de Calidad del Aire - ICA (Artículos 18 y 19, Tabla 5)",
+   "fuente": "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente), Colombia. 1 de noviembre de 2017.",
+   "url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/Resolucion-2254-de-2017.pdf",
+   "texto": "- 301-500, Marrón, Peligrosa: advertencia sanitaria; toda la población puede presentar efectos adversos graves en la salud humana."
+  },
+  {
+   "chunk_id": "RES2254-12-0",
+   "doc_id": "RES2254",
+   "titulo": "Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible - Norma de calidad del aire ambiente",
+   "seccion": "Puntos de corte del ICA para PM2.5 (Artículo 20, Tabla 6)",
+   "fuente": "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente), Colombia. 1 de noviembre de 2017.",
+   "url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/Resolucion-2254-de-2017.pdf",
+   "texto": "Puntos de corte del ICA para PM2.5 en 24 horas (µg/m3):\n- ICA 0-50 (Verde, Buena): 0-12.\n- ICA 51-100 (Amarillo, Aceptable): 13-37.\n- ICA 101-150 (Naranja, Dañina a la salud de grupos sensibles): 38-55.\n- ICA 151-200 (Rojo, Dañina a la salud): 56-150.\n- ICA 201-300 (Púrpura, Muy dañina a la salud): 151-250.\n- ICA 301-500 (Marrón, Peligrosa): 251-500.\nPara PM10 en 24 horas los cortes son 0-54, 55-154, 155-254, 255-354, 355-424 y 425-604 µg/m3."
+  },
+  {
+   "chunk_id": "RES2254-13-0",
+   "doc_id": "RES2254",
+   "titulo": "Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible - Norma de calidad del aire ambiente",
+   "seccion": "Cálculo del ICA (Artículo 21)",
+   "fuente": "Ministerio de Ambiente y Desarrollo Sostenible (MinAmbiente), Colombia. 1 de noviembre de 2017.",
+   "url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/Resolucion-2254-de-2017.pdf",
+   "texto": "El ICA de un contaminante se calcula por interpolación lineal: ICA = (I_alto - I_bajo) / (PC_alto - PC_bajo) x (C_p - PC_bajo) + I_bajo, donde C_p es la concentración medida, PC_alto y PC_bajo son los puntos de corte mayor y menor que contienen a C_p, e I_alto e I_bajo son los valores del índice correspondientes a esos puntos de corte. Ejemplo: una concentración de PM2.5 de 30 µg/m3 está entre 13 y 37 (Aceptable), por lo que ICA = (100-51)/(37-13) x (30-13) + 51 = 85,7, aproximadamente 86 (Amarillo)."
+  },
+  {
+   "chunk_id": "SIATA-01-0",
+   "doc_id": "SIATA",
+   "titulo": "SIATA y la red de monitoreo de calidad del aire del Valle de Aburrá - datos usados en este proyecto",
+   "seccion": "Qué es el SIATA",
+   "fuente": "Sistema de Alerta Temprana de Medellín y el Valle de Aburrá (SIATA), proyecto del AMVA, la Alcaldía de Medellín y EPM. Datos abiertos de PM2.5 (archivo Datos_SIATA_Aire_pm25.json). Descripción del procesamiento elaborada por el equipo.",
+   "url": "https://siata.gov.co/siata_nuevo/",
+   "texto": "El SIATA (Sistema de Alerta Temprana de Medellín y el Valle de Aburrá) es un proyecto de ciencia y tecnología del Área Metropolitana del Valle de Aburrá, la Alcaldía de Medellín y EPM. Opera redes de monitoreo hidrometeorológico y de calidad del aire, produce pronósticos y publica en tiempo real el Índice de Calidad del Aire (ICA) por estación. La red de monitoreo de calidad del aire del valle está acreditada por el IDEAM para producir información ambiental oficial, y sus datos son la base para que el AMVA declare los niveles del POECA."
+  },
+  {
+   "chunk_id": "SIATA-02-0",
+   "doc_id": "SIATA",
+   "titulo": "SIATA y la red de monitoreo de calidad del aire del Valle de Aburrá - datos usados en este proyecto",
+   "seccion": "Datos usados en este proyecto",
+   "fuente": "Sistema de Alerta Temprana de Medellín y el Valle de Aburrá (SIATA), proyecto del AMVA, la Alcaldía de Medellín y EPM. Datos abiertos de PM2.5 (archivo Datos_SIATA_Aire_pm25.json). Descripción del procesamiento elaborada por el equipo.",
+   "url": "https://siata.gov.co/siata_nuevo/",
+   "texto": "Se usa el archivo abierto de PM2.5 del SIATA, con mediciones horarias por estación entre el 31 de julio de 2023 y el 31 de julio de 2024. El archivo contiene 21 estaciones con su código, nombre, nombre corto, latitud y longitud; 17 tienen datos válidos en el periodo (cuatro de las marcadas como \"_OFF\" no reportaron ningún dato válido y la estación MED-LAYE tiene datos parciales). Cada dato horario incluye una bandera de calidad: SIATA indica que solo los datos con bandera menor o igual a 2,5 son de buena calidad; las demás banderas o el valor -9999 indican dato faltante o no validado."
+  },
+  {
+   "chunk_id": "SIATA-03-0",
+   "doc_id": "SIATA",
+   "titulo": "SIATA y la red de monitoreo de calidad del aire del Valle de Aburrá - datos usados en este proyecto",
+   "seccion": "Procesamiento y control de calidad",
+   "fuente": "Sistema de Alerta Temprana de Medellín y el Valle de Aburrá (SIATA), proyecto del AMVA, la Alcaldía de Medellín y EPM. Datos abiertos de PM2.5 (archivo Datos_SIATA_Aire_pm25.json). Descripción del procesamiento elaborada por el equipo.",
+   "url": "https://siata.gov.co/siata_nuevo/",
+   "texto": "1. Se descartan las horas con bandera de calidad mayor a 2,5 o con valor negativo.\n2. El promedio diario de 24 horas se calcula solo si hay al menos 18 horas válidas (75 % del día), criterio de representatividad usual en la normatividad colombiana de monitoreo.\n3. Se trabaja con 17 estaciones que tienen al menos 30 días válidos; en total 5.870 promedios diarios estación-día.\n4. La categoría ICA de cada día se calcula con los puntos de corte de la Resolución 2254 de 2017 (redondeando la concentración al entero más cercano)."
+  },
+  {
+   "chunk_id": "SIATA-04-0",
+   "doc_id": "SIATA",
+   "titulo": "SIATA y la red de monitoreo de calidad del aire del Valle de Aburrá - datos usados en este proyecto",
+   "seccion": "Resumen de los datos del periodo 2023-2024",
+   "fuente": "Sistema de Alerta Temprana de Medellín y el Valle de Aburrá (SIATA), proyecto del AMVA, la Alcaldía de Medellín y EPM. Datos abiertos de PM2.5 (archivo Datos_SIATA_Aire_pm25.json). Descripción del procesamiento elaborada por el equipo.",
+   "url": "https://siata.gov.co/siata_nuevo/",
+   "texto": "- PM2.5 diario medio de todas las estaciones: alrededor de 18,7 µg/m3 (mediana 17 µg/m3).\n- Distribución de categorías diarias estación-día: Buena (0-12) 1.158 días; Aceptable (13-37) 4.540 días; Dañina para grupos sensibles (38-55) 171 días; Dañina (56-150) 1 día.\n- Los días en categoría Naranja o peor se concentraron entre enero y abril de 2024, con el máximo en marzo de 2024 (promedio mensual de 30,9 µg/m3 y 91 estación-días en Naranja o peor), coincidiendo con la primera temporada crítica del año. En octubre a diciembre de 2023 solo hubo 2 estación-días en Naranja.\n- El valor diario más alto observado fue 59 µg/m3 (marzo de 2024).\n- Los meses más limpios fueron mayo a julio de 2024, con promedios mensuales cercanos a 14 µg/m3."
+  },
+  {
+   "chunk_id": "SIATA-05-0",
+   "doc_id": "SIATA",
+   "titulo": "SIATA y la red de monitoreo de calidad del aire del Valle de Aburrá - datos usados en este proyecto",
+   "seccion": "Estaciones con datos válidos (código - nombre corto - municipio)",
+   "fuente": "Sistema de Alerta Temprana de Medellín y el Valle de Aburrá (SIATA), proyecto del AMVA, la Alcaldía de Medellín y EPM. Datos abiertos de PM2.5 (archivo Datos_SIATA_Aire_pm25.json). Descripción del procesamiento elaborada por el equipo.",
+   "url": "https://siata.gov.co/siata_nuevo/",
+   "texto": "12 CEN-TRAF Estación Tráfico Centro (Medellín); 28 ITA-CJUS Casa de Justicia (Itagüí); 38 ITA-CONC I.E. Concejo Municipal (Itagüí); 44 MED-LAYE Tanques La Ye EPM, El Poblado (Medellín, datos parciales); 69 CAL-JOAR E.U. Joaquín Aristizábal (Caldas); 78 EST-HOSP Hospital (La Estrella); 79 MED-ALTA Altavista (Medellín); 80 MED-VILL Villahermosa (Medellín); 81 BAR-TORR Torre Social (Barbosa); 82 COP-CVID Ciudadela Educativa La Vida (Copacabana); 83 MED-BEME Belén (Medellín); 84 MED-TESO I.E. INEM sede Santa Catalina, El Poblado (Medellín); 85 MED-SCRI San Cristóbal (Medellín); 86 MED-ARAN Aranjuez (Medellín); 87 BEL-FEVE I.E. Fernando Vélez (Bello); 88 ENV-HOSP E.S.E. Santa Gertrudis (Envigado); 90 SAB-RAME I.E. Rafael J. Mejía (Sabaneta)."
+  },
+  {
+   "chunk_id": "SIATA-06-0",
+   "doc_id": "SIATA",
+   "titulo": "SIATA y la red de monitoreo de calidad del aire del Valle de Aburrá - datos usados en este proyecto",
+   "seccion": "Limitaciones de los datos",
+   "fuente": "Sistema de Alerta Temprana de Medellín y el Valle de Aburrá (SIATA), proyecto del AMVA, la Alcaldía de Medellín y EPM. Datos abiertos de PM2.5 (archivo Datos_SIATA_Aire_pm25.json). Descripción del procesamiento elaborada por el equipo.",
+   "url": "https://siata.gov.co/siata_nuevo/",
+   "texto": "- El archivo abierto cubre un año (2023-2024); no incluye datos posteriores, por lo que la aplicación trabaja con una \"fecha de consulta\" dentro de ese periodo y no informa la calidad del aire actual.\n- Las estaciones miden en un punto: su valor representa el entorno de la estación, no todo el municipio.\n- Los datos horarios publicados en tiempo real pueden ser preliminares; la validación final la hace la autoridad.\n- Para la calidad del aire del día de hoy se debe consultar directamente el SIATA (siata.gov.co) o los canales del AMVA."
+  }
+ ]
+}

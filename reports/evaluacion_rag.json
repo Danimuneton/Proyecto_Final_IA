@@ -1,0 +1,623 @@
+{
+  "hibrido": {
+    "backend": "hibrido",
+    "n": 18,
+    "hit@1": 0.7222222222222222,
+    "hit@4": 1.0,
+    "mrr": 0.8425925925925926,
+    "detalle": [
+      {
+        "consulta": "¿Cuál es el nivel máximo permisible de PM2.5 en 24 horas en Colombia?",
+        "esperado": "RES2254",
+        "recuperados": [
+          "OMS2021",
+          "RES2254",
+          "OMS2021",
+          "RES2254"
+        ],
+        "rank": 2
+      },
+      {
+        "consulta": "¿Qué rango de concentración corresponde al ICA naranja para PM2.5?",
+        "esperado": "RES2254",
+        "recuperados": [
+          "POECA",
+          "RES2254",
+          "SALUD",
+          "SALUD"
+        ],
+        "rank": 2
+      },
+      {
+        "consulta": "¿Cómo se calcula el índice de calidad del aire?",
+        "esperado": "RES2254",
+        "recuperados": [
+          "SALUD",
+          "SALUD",
+          "RES2254",
+          "RES2254"
+        ],
+        "rank": 3
+      },
+      {
+        "consulta": "¿Cuándo se declara el nivel de alerta por constatación con medias móviles?",
+        "esperado": "RES2254",
+        "recuperados": [
+          "RES2254",
+          "RES2254",
+          "POECA",
+          "RES2254"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Qué es el POECA y qué acuerdo metropolitano lo adoptó?",
+        "esperado": "POECA",
+        "recuperados": [
+          "POECA",
+          "SIATA",
+          "POECA",
+          "POECA"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Qué medidas toma el Área Metropolitana durante un episodio de contaminación?",
+        "esperado": "POECA",
+        "recuperados": [
+          "POECA",
+          "POECA",
+          "POECA",
+          "RES2254"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿En qué meses son las temporadas críticas de calidad del aire en el valle?",
+        "esperado": "POECA",
+        "recuperados": [
+          "METEO",
+          "METEO",
+          "POECA",
+          "POECA"
+        ],
+        "rank": 3
+      },
+      {
+        "consulta": "¿Puedo salir a correr si el aire está dañino para grupos sensibles?",
+        "esperado": "SALUD",
+        "recuperados": [
+          "SALUD",
+          "SALUD",
+          "SALUD",
+          "SALUD"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Quiénes son los grupos sensibles al material particulado?",
+        "esperado": "SALUD",
+        "recuperados": [
+          "SALUD",
+          "OMS2021",
+          "SALUD",
+          "RES2254"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Sirve un tapabocas para protegerme del PM2.5?",
+        "esperado": "SALUD",
+        "recuperados": [
+          "SALUD",
+          "SALUD",
+          "POECA",
+          "SALUD"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Qué recomienda la OMS como valor guía diario de PM2.5?",
+        "esperado": "OMS2021",
+        "recuperados": [
+          "OMS2021",
+          "OMS2021",
+          "OMS2021",
+          "OMS2021"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Qué efectos tiene el material particulado fino en la salud?",
+        "esperado": "OMS2021",
+        "recuperados": [
+          "OMS2021",
+          "SALUD",
+          "SALUD",
+          "OMS2021"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿De dónde vienen los datos de las estaciones de monitoreo?",
+        "esperado": "SIATA",
+        "recuperados": [
+          "RES2254",
+          "SIATA",
+          "SIATA",
+          "RES2254"
+        ],
+        "rank": 2
+      },
+      {
+        "consulta": "¿Qué estaciones de calidad del aire hay en Itagüí?",
+        "esperado": "SIATA",
+        "recuperados": [
+          "SIATA",
+          "POECA",
+          "POECA",
+          "POECA"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Por qué la topografía del valle favorece la acumulación de contaminantes?",
+        "esperado": "METEO",
+        "recuperados": [
+          "METEO",
+          "METEO",
+          "METEO",
+          "METEO"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿La lluvia ayuda a limpiar el aire?",
+        "esperado": "METEO",
+        "recuperados": [
+          "METEO",
+          "POECA",
+          "POECA",
+          "SALUD"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Cómo funciona el modelo oculto de Markov del proyecto?",
+        "esperado": "METODO",
+        "recuperados": [
+          "METODO",
+          "METODO",
+          "METODO",
+          "METODO"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Qué tan preciso es el pronóstico de mañana comparado con la persistencia?",
+        "esperado": "METODO",
+        "recuperados": [
+          "METODO",
+          "METODO",
+          "METODO",
+          "METODO"
+        ],
+        "rank": 1
+      }
+    ]
+  },
+  "embeddings": {
+    "backend": "embeddings+faiss",
+    "n": 18,
+    "hit@1": 0.7777777777777778,
+    "hit@4": 0.9444444444444444,
+    "mrr": 0.8518518518518519,
+    "detalle": [
+      {
+        "consulta": "¿Cuál es el nivel máximo permisible de PM2.5 en 24 horas en Colombia?",
+        "esperado": "RES2254",
+        "recuperados": [
+          "OMS2021",
+          "SIATA",
+          "SIATA",
+          "OMS2021"
+        ],
+        "rank": null
+      },
+      {
+        "consulta": "¿Qué rango de concentración corresponde al ICA naranja para PM2.5?",
+        "esperado": "RES2254",
+        "recuperados": [
+          "RES2254",
+          "POECA",
+          "OMS2021",
+          "OMS2021"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Cómo se calcula el índice de calidad del aire?",
+        "esperado": "RES2254",
+        "recuperados": [
+          "RES2254",
+          "RES2254",
+          "OMS2021",
+          "SALUD"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Cuándo se declara el nivel de alerta por constatación con medias móviles?",
+        "esperado": "RES2254",
+        "recuperados": [
+          "RES2254",
+          "RES2254",
+          "RES2254",
+          "RES2254"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Qué es el POECA y qué acuerdo metropolitano lo adoptó?",
+        "esperado": "POECA",
+        "recuperados": [
+          "POECA",
+          "RES2254",
+          "RES2254",
+          "POECA"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Qué medidas toma el Área Metropolitana durante un episodio de contaminación?",
+        "esperado": "POECA",
+        "recuperados": [
+          "POECA",
+          "POECA",
+          "RES2254",
+          "RES2254"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿En qué meses son las temporadas críticas de calidad del aire en el valle?",
+        "esperado": "POECA",
+        "recuperados": [
+          "POECA",
+          "METEO",
+          "METEO",
+          "METEO"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Puedo salir a correr si el aire está dañino para grupos sensibles?",
+        "esperado": "SALUD",
+        "recuperados": [
+          "SALUD",
+          "SALUD",
+          "SALUD",
+          "SALUD"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Quiénes son los grupos sensibles al material particulado?",
+        "esperado": "SALUD",
+        "recuperados": [
+          "SALUD",
+          "METEO",
+          "OMS2021",
+          "RES2254"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Sirve un tapabocas para protegerme del PM2.5?",
+        "esperado": "SALUD",
+        "recuperados": [
+          "OMS2021",
+          "RES2254",
+          "SALUD",
+          "OMS2021"
+        ],
+        "rank": 3
+      },
+      {
+        "consulta": "¿Qué recomienda la OMS como valor guía diario de PM2.5?",
+        "esperado": "OMS2021",
+        "recuperados": [
+          "OMS2021",
+          "OMS2021",
+          "OMS2021",
+          "SALUD"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Qué efectos tiene el material particulado fino en la salud?",
+        "esperado": "OMS2021",
+        "recuperados": [
+          "OMS2021",
+          "SALUD",
+          "SALUD",
+          "SALUD"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿De dónde vienen los datos de las estaciones de monitoreo?",
+        "esperado": "SIATA",
+        "recuperados": [
+          "RES2254",
+          "SIATA",
+          "SIATA",
+          "SIATA"
+        ],
+        "rank": 2
+      },
+      {
+        "consulta": "¿Qué estaciones de calidad del aire hay en Itagüí?",
+        "esperado": "SIATA",
+        "recuperados": [
+          "SIATA",
+          "POECA",
+          "POECA",
+          "POECA"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Por qué la topografía del valle favorece la acumulación de contaminantes?",
+        "esperado": "METEO",
+        "recuperados": [
+          "POECA",
+          "METEO",
+          "METEO",
+          "METEO"
+        ],
+        "rank": 2
+      },
+      {
+        "consulta": "¿La lluvia ayuda a limpiar el aire?",
+        "esperado": "METEO",
+        "recuperados": [
+          "METEO",
+          "SALUD",
+          "SALUD",
+          "METEO"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Cómo funciona el modelo oculto de Markov del proyecto?",
+        "esperado": "METODO",
+        "recuperados": [
+          "METODO",
+          "METODO",
+          "METODO",
+          "METODO"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Qué tan preciso es el pronóstico de mañana comparado con la persistencia?",
+        "esperado": "METODO",
+        "recuperados": [
+          "METODO",
+          "METODO",
+          "METODO",
+          "METODO"
+        ],
+        "rank": 1
+      }
+    ]
+  },
+  "tfidf": {
+    "backend": "tfidf",
+    "n": 18,
+    "hit@1": 0.7222222222222222,
+    "hit@4": 0.9444444444444444,
+    "mrr": 0.7962962962962963,
+    "detalle": [
+      {
+        "consulta": "¿Cuál es el nivel máximo permisible de PM2.5 en 24 horas en Colombia?",
+        "esperado": "RES2254",
+        "recuperados": [
+          "RES2254",
+          "OMS2021",
+          "RES2254",
+          "OMS2021"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Qué rango de concentración corresponde al ICA naranja para PM2.5?",
+        "esperado": "RES2254",
+        "recuperados": [
+          "POECA",
+          "SALUD",
+          "METEO",
+          "RES2254"
+        ],
+        "rank": 4
+      },
+      {
+        "consulta": "¿Cómo se calcula el índice de calidad del aire?",
+        "esperado": "RES2254",
+        "recuperados": [
+          "SIATA",
+          "SALUD",
+          "SALUD",
+          "RES2254"
+        ],
+        "rank": 4
+      },
+      {
+        "consulta": "¿Cuándo se declara el nivel de alerta por constatación con medias móviles?",
+        "esperado": "RES2254",
+        "recuperados": [
+          "RES2254",
+          "POECA",
+          "POECA",
+          "RES2254"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Qué es el POECA y qué acuerdo metropolitano lo adoptó?",
+        "esperado": "POECA",
+        "recuperados": [
+          "POECA",
+          "SIATA",
+          "OMS2021",
+          "POECA"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Qué medidas toma el Área Metropolitana durante un episodio de contaminación?",
+        "esperado": "POECA",
+        "recuperados": [
+          "POECA",
+          "SIATA",
+          "POECA",
+          "POECA"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿En qué meses son las temporadas críticas de calidad del aire en el valle?",
+        "esperado": "POECA",
+        "recuperados": [
+          "METEO",
+          "METEO",
+          "SALUD",
+          "RES2254"
+        ],
+        "rank": null
+      },
+      {
+        "consulta": "¿Puedo salir a correr si el aire está dañino para grupos sensibles?",
+        "esperado": "SALUD",
+        "recuperados": [
+          "SALUD",
+          "SALUD",
+          "SALUD",
+          "RES2254"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Quiénes son los grupos sensibles al material particulado?",
+        "esperado": "SALUD",
+        "recuperados": [
+          "SALUD",
+          "RES2254",
+          "SALUD",
+          "SALUD"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Sirve un tapabocas para protegerme del PM2.5?",
+        "esperado": "SALUD",
+        "recuperados": [
+          "SALUD",
+          "SALUD",
+          "POECA",
+          "METODO"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Qué recomienda la OMS como valor guía diario de PM2.5?",
+        "esperado": "OMS2021",
+        "recuperados": [
+          "OMS2021",
+          "OMS2021",
+          "OMS2021",
+          "OMS2021"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Qué efectos tiene el material particulado fino en la salud?",
+        "esperado": "OMS2021",
+        "recuperados": [
+          "OMS2021",
+          "SALUD",
+          "RES2254",
+          "POECA"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿De dónde vienen los datos de las estaciones de monitoreo?",
+        "esperado": "SIATA",
+        "recuperados": [
+          "POECA",
+          "SIATA",
+          "RES2254",
+          "SIATA"
+        ],
+        "rank": 2
+      },
+      {
+        "consulta": "¿Qué estaciones de calidad del aire hay en Itagüí?",
+        "esperado": "SIATA",
+        "recuperados": [
+          "RES2254",
+          "POECA",
+          "SIATA",
+          "RES2254"
+        ],
+        "rank": 3
+      },
+      {
+        "consulta": "¿Por qué la topografía del valle favorece la acumulación de contaminantes?",
+        "esperado": "METEO",
+        "recuperados": [
+          "METEO",
+          "METEO",
+          "METEO",
+          "RES2254"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿La lluvia ayuda a limpiar el aire?",
+        "esperado": "METEO",
+        "recuperados": [
+          "METEO",
+          "METEO",
+          "POECA",
+          "POECA"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Cómo funciona el modelo oculto de Markov del proyecto?",
+        "esperado": "METODO",
+        "recuperados": [
+          "METODO",
+          "METODO",
+          "METODO",
+          "METODO"
+        ],
+        "rank": 1
+      },
+      {
+        "consulta": "¿Qué tan preciso es el pronóstico de mañana comparado con la persistencia?",
+        "esperado": "METODO",
+        "recuperados": [
+          "METODO",
+          "METODO",
+          "METODO",
+          "METEO"
+        ],
+        "rank": 1
+      }
+    ]
+  }
+}
