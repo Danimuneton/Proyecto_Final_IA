@@ -1,0 +1,24 @@
+# Probado con Python 3.11 (Linux) - compatible con Python 3.10 a 3.12 en Windows/macOS/Linux
+# Datos y modelos de la Parte 1 (HMM y regresión logística implementados con NumPy)
+numpy>=1.26,<3
+pandas>=2.1,<4
+requests>=2.31
+scikit-learn>=1.4,<2      # solo TF-IDF del RAG y verificación de nuestra regresión logística
+matplotlib>=3.8,<4        # figuras estáticas del informe
+
+# RAG (Parte 2)
+sentence-transformers>=3.0,<7
+faiss-cpu>=1.8,<2
+
+# Agente LLM (cliente compatible con OpenAI: Groq / NVIDIA NIM / Ollama)
+openai>=1.40,<4
+python-dotenv>=1.0
+
+# Dashboard
+streamlit>=1.50,<2
+plotly>=6.0,<8
+
+# Notebooks
+jupyter
+ipykernel
+nbformat

@@ -1,0 +1,23 @@
+# Entornos y caches
+venv/
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Secretos (nunca subir llaves de API)
+.env
+.streamlit/secrets.toml
+
+# Datos crudos descargados (se regeneran con scripts/download_data.py)
+data/raw/
+
+# Caché del modelo de embeddings
+models/hf_cache/
+
+# Sistema operativo / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
