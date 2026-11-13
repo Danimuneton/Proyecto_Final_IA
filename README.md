@@ -68,13 +68,19 @@ venv\Scripts\activate
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 
-# 3) Llave del LLM
+# 3) Llave del LLM (ver "Cómo crear la llave de Groq" abajo)
 copy .env.example .env
 notepad .env        # reemplace gsk_su_llave_aqui por su llave de Groq y guarde
 
 # 4) Ejecutar el dashboard (se abre en http://localhost:8501)
 streamlit run app.py
 ```
+
+**Cómo crear la llave de Groq (gratis, ~2 minutos):**
+1. Entrar a **https://console.groq.com/keys** e iniciar sesión (con Google, GitHub o correo).
+2. Clic en **Create API Key**, ponerle un nombre (p. ej. `si3003`) y confirmar.
+3. Copiar la llave que aparece (empieza por `gsk_`; solo se muestra una vez).
+4. En el archivo `.env`, dejar la línea así: `GROQ_API_KEY=gsk_...` (sin comillas ni espacios), guardar y volver a ejecutar `streamlit run app.py`.
 
 - **No hay que descargar datos ni entrenar nada**: los datos procesados, los modelos entrenados y el índice FAISS vienen en el repositorio.
 - **Sin llave**, todo el dashboard funciona (mapa, series, predicción, evaluación) y el chat muestra un aviso de configuración.
@@ -181,17 +187,21 @@ Cada corrida guarda `evaluacion\resultados_agente_<modelo>.md/.csv`.
 
 ```mermaid
 flowchart LR
-    A[SIATA JSON<br/>PM2.5 horario] --> P[data.py<br/>limpieza y promedios 24 h]
-    B[Open-Meteo ERA5] --> P
-    P --> H[HMM propio<br/>Baum-Welch / forward / Viterbi]
-    H -->|P(estado hoy)| L[Regresión logística propia<br/>clase ICA de mañana]
+    A["SIATA JSON<br/>PM2.5 horario"] --> P["data.py<br/>limpieza y promedios 24 h"]
+    B["Open-Meteo ERA5"] --> P
+    P --> H["HMM propio<br/>Baum-Welch, forward, Viterbi"]
+    H -->|"P(estado de hoy)"| L["Regresión logística propia<br/>clase ICA de mañana"]
     P --> L
-    D[docs/corpus<br/>Res. 2254, POECA, salud, OMS...] --> R[RAG híbrido<br/>MiniLM multilingüe + FAISS + TF-IDF]
-    H & L & P --> T[Herramientas<br/>get_pm25 · predict_tomorrow<br/>get_episode_state · search_docs]
+    D["docs/corpus<br/>Res. 2254, POECA, salud, OMS"] --> R["RAG híbrido<br/>MiniLM multilingüe + FAISS + TF-IDF"]
+    H --> T["Herramientas<br/>get_pm25, predict_tomorrow<br/>get_episode_state, search_docs"]
+    L --> T
+    P --> T
     R --> T
-    T <--> G[Agente LLM<br/>loop T_max=6 + verificador de citas]
-    G --> UI[Dashboard Streamlit<br/>mapa · series · predicción · evaluación · chat]
-    H & L & P --> UI
+    T <--> G["Agente LLM<br/>loop T_max = 6 + verificador de citas"]
+    G --> UI["Dashboard Streamlit<br/>mapa, series, predicción, evaluación, chat"]
+    H --> UI
+    L --> UI
+    P --> UI
 ```
 
 **Integración no trivial Parte 1 ↔ Parte 2:** el HMM entrega las probabilidades filtradas del estado latente, que son variables del clasificador; ambos modelos son herramientas que el agente invoca, y el agente combina sus salidas con los documentos recuperados (p. ej., "¿puedo trotar mañana si tengo asma?" → `predict_tomorrow` + `search_docs` → respuesta con citas).
