@@ -15,7 +15,7 @@ Profesor: Jorge Iván Padilla Buriticá
 ## Contenido
 
 1. [Cumplimiento de los requisitos y la rúbrica](#1-cumplimiento-de-los-requisitos-y-la-rúbrica)
-2. [Instalación y ejecución (Windows / PowerShell)](#2-instalación-y-ejecución-windows--powershell)
+2. [Instalación y ejecución (Windows / PowerShell)](#2-instalación-y-ejecución-windows--powershell) · [Guía del dashboard](#21-guía-del-dashboard-pestaña-por-pestaña)
 3. [Reproducir todos los resultados](#3-reproducir-todos-los-resultados)
 4. [Datos y uso responsable](#4-datos-y-uso-responsable)
 5. [Arquitectura](#5-arquitectura)
@@ -55,28 +55,31 @@ Profesor: Jorge Iván Padilla Buriticá
 
 ## 2. Instalación y ejecución (Windows / PowerShell)
 
-**Requisitos:** Python 3.10, 3.11 o 3.12 ([python.org](https://www.python.org/downloads/), marque *Add Python to PATH*), Git y conexión a internet la primera vez (se descargan las librerías y el modelo de embeddings, ~0,5 GB).
+**Requisitos:** Python 3.10, 3.11 o 3.12 ([python.org](https://www.python.org/downloads/), marque *Add Python to PATH*), Git, conexión a internet y una llave gratuita de Groq ([console.groq.com/keys](https://console.groq.com/keys), solo para el chat). Probado desde un clon limpio: la instalación tarda ~3–10 minutos según la conexión.
 
 ```powershell
 # 1) Clonar
 git clone https://github.com/Danimuneton/Proyecto_Final_IA.git
 cd Proyecto_Final_IA
 
-# 2) Entorno virtual e instalación (5-10 minutos la primera vez)
+# 2) Entorno virtual e instalación
 python -m venv venv
 venv\Scripts\activate
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 
-# 3) Llave gratuita del LLM (Groq): crear en https://console.groq.com/keys
+# 3) Llave del LLM
 copy .env.example .env
-notepad .env        # reemplace gsk_su_llave_aqui por su llave y guarde
+notepad .env        # reemplace gsk_su_llave_aqui por su llave de Groq y guarde
 
 # 4) Ejecutar el dashboard (se abre en http://localhost:8501)
 streamlit run app.py
 ```
 
-Si PowerShell bloquea la activación del entorno, ejecute una vez `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` y repita `venv\Scripts\activate`.
+- **No hay que descargar datos ni entrenar nada**: los datos procesados, los modelos entrenados y el índice FAISS vienen en el repositorio.
+- **Sin llave**, todo el dashboard funciona (mapa, series, predicción, evaluación) y el chat muestra un aviso de configuración.
+- **La primera pregunta del chat tarda 1–2 minutos** porque descarga el modelo de embeddings (~470 MB); las siguientes responden en ~2–5 s.
+- Para detener la app: `Ctrl + C` en la terminal.
 
 <details>
 <summary>macOS / Linux</summary>
@@ -89,19 +92,55 @@ streamlit run app.py
 ```
 </details>
 
-**Proveedores de LLM alternativos** (todos con API compatible con OpenAI, se configuran en `.env`):
+**Problemas frecuentes**
+
+| Síntoma | Solución |
+|---|---|
+| PowerShell no deja activar el entorno | `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` y repetir `venv\Scripts\activate` |
+| `python` no se reconoce | Reinstalar Python marcando *Add Python to PATH*, o usar `py -m venv venv` |
+| Chat: "La llave de API del LLM no es válida" o "No hay llave" | Revisar `GROQ_API_KEY` en `.env` (sin comillas ni espacios) y reiniciar `streamlit run app.py` |
+| Chat: "Se alcanzó el límite de uso gratuito" | Esperar un minuto y repetir (límite de 8.000 tokens/min de Groq); si persiste, el agente cambia solo a `gpt-oss-20b` |
+| "Port 8501 is already in use" | Cerrar la otra app o usar `streamlit run app.py --server.port 8502` |
+
+**Proveedores de LLM alternativos** (API compatible con OpenAI, se configuran en `.env`):
 
 | Proveedor | Variables en `.env` | Modelo por defecto |
 |---|---|---|
-| Groq (por defecto, capa gratuita) | `LLM_PROVIDER=groq`, `GROQ_API_KEY=...` | `openai/gpt-oss-120b` |
+| Groq (por defecto, capa gratuita) | `LLM_PROVIDER=groq`, `GROQ_API_KEY=...` | `openai/gpt-oss-120b` (respaldo: `openai/gpt-oss-20b`) |
 | NVIDIA NIM | `LLM_PROVIDER=nvidia`, `NVIDIA_API_KEY=...` | `meta/llama-3.3-70b-instruct` |
-| Ollama local, sin llave | `LLM_PROVIDER=ollama` (antes: `ollama pull qwen2.5:7b`) | `qwen2.5:7b` |
+| Ollama local, sin llave | `LLM_PROVIDER=ollama` (antes: `ollama pull qwen2.5:7b`) | `qwen2.5:7b` (lento en CPU) |
 
-Cualquier modelo se cambia con `LLM_MODEL=...`.
+**Límites de Groq** (`gpt-oss-120b`: 30 solicitudes/min, 8.000 tokens/min, 200.000 tokens/día). El agente envía observaciones compactas, usa `reasoning_effort=low`, respeta el encabezado `retry-after` ante un 429 y, si el límite persiste, pasa a `gpt-oss-20b`; si todo falla, el chat muestra lo que alcanzaron a devolver las herramientas.
 
-**Límites de la capa gratuita de Groq** (`openai/gpt-oss-120b`: 30 solicitudes/min, 8.000 tokens/min y 200.000 tokens/día). Para respetarlos, el agente envía observaciones compactas, usa `reasoning_effort=low`, espera lo que indica el encabezado `retry-after` ante un error 429 y, si el límite persiste (p. ej. cupo diario agotado), cambia automáticamente a `openai/gpt-oss-20b` (`LLM_FALLBACK_MODEL`). Si aun así falla, el chat muestra lo que alcanzaron a devolver las herramientas. `scripts/evaluate_agent.py` espera 45 s entre preguntas con Groq. Recomendación: no correr la evaluación varias veces el mismo día. Sin llave, el dashboard funciona completo (mapa, series, predicción, evaluación) y el chat muestra un mensaje claro de configuración.
+---
 
-**Uso sugerido para la demostración:** fecha de consulta 2024-03-15 (en plena temporada crítica de marzo de 2024), estación MED-BEME (Belén). Pruebe las preguntas sugeridas del chat, cambie el municipio y mueva el escenario de mañana.
+## 2.1 Guía del dashboard, pestaña por pestaña
+
+Los datos son históricos (31-jul-2023 a 30-jul-2024): la **fecha de consulta** de la barra lateral hace de "hoy" y "mañana" es el día siguiente. Las herramientas no permiten consultar mediciones posteriores a esa fecha.
+
+**Barra lateral (parámetros).** *Municipio* y *Estación* (17 estaciones con datos); *Fecha de consulta*; *Ventana* de la serie (30 a 365 días); *Escenario para mañana*: meteorología observada (reanálisis ERA5) o personalizada con controles de lluvia, viento, radiación y nubosidad; casilla *Mañana es domingo o festivo*. Abajo se ve qué LLM está configurado y si hay llave.
+
+**Indicadores superiores.** PM2.5 promedio de 24 h de la estación y fecha elegidas, su ICA con el color de la Res. 2254/2017, el estado latente más probable según el HMM y la categoría pronosticada para mañana.
+
+| Pestaña | Qué muestra | Qué probar |
+|---|---|---|
+| 🗺️ **Mapa** | Estaciones sobre el mapa, coloreadas por categoría ICA y con tamaño según el PM2.5 del día; a la derecha, ranking de estaciones de mayor a menor | Cambiar la fecha a 2024-03-15 (temporada crítica) y a 2024-06-15 (mes limpio) |
+| 📈 **Serie de tiempo** | PM2.5 diario de la estación con bandas de color ICA, norma 24 h (37) y guía OMS (15), promedio del valle y puntos coloreados por estado del HMM (azul Normal, naranja Alerta, rojo Episodio crítico); abajo, la probabilidad filtrada de cada estado y el perfil horario del día | Ventana de 365 días: ver cómo el HMM marca el episodio de febrero–abril de 2024 |
+| 🔮 **Predicción** | Probabilidades de cada categoría para mañana (regresión logística con variables del HMM), predicción, línea base de persistencia, valor real observado, escenario usado, factores principales y gráfica de backtesting ene–jul 2024 de la estación con su exactitud | Elegir *Personalizada* y subir la lluvia, o marcar domingo/festivo, y ver cómo cambian las probabilidades |
+| 🧪 **Modelo y evaluación** | Tabla del modelo frente a las líneas base, matriz de confusión, matriz de transición del HMM, detalle de intervalos bootstrap y verificación con scikit-learn, evaluación del RAG y resultados de las 14 preguntas del agente | Abrir los desplegables |
+| 💬 **Chat con el agente** | 4 preguntas sugeridas, campo de texto, y en cada respuesta: herramientas llamadas (con argumentos), fuentes citadas y modelo usado | Ver el recorrido de abajo |
+
+**Recorrido de prueba de 5 minutos** (valores esperados con fecha **2024-03-15** y estación **MED-BEME**, que son los valores por defecto):
+
+1. Indicadores: **27,4 µg/m³**, ICA **80 Aceptable**, estado HMM **Episodio crítico**, pronóstico para 2024-03-16 **Aceptable**.
+2. Mapa: **CEN-TRAF** encabeza el ranking con **37,7 µg/m³** (naranja).
+3. Predicción → *Personalizada* → lluvia 25 mm: la probabilidad de *Dañina* sube de ~8 % a ~14 %.
+4. Chat:
+   - "¿Cómo está el aire hoy en esta estación y qué significa?" → usa `get_pm25` (+ `search_docs`) y cita [SIATA].
+   - "Tengo asma, ¿puedo salir a trotar mañana en Envigado?" → `predict_tomorrow` para ENV-HOSP + `search_docs`, cita [Modelo del proyecto] y [SALUD: …].
+   - "¿Qué medidas contempla el POECA en un episodio crítico?" → `search_docs` con citas [POECA: …].
+   - "¿Cómo está el aire en Rionegro?" → explica que no hay estación allí (manejo de errores).
+   - "¿Quién ganó el último partido de Atlético Nacional?" → se niega sin usar herramientas.
 
 ---
 
@@ -252,6 +291,6 @@ En la 2.ª corrida ([`resultados_agente_openai_gpt-oss-120b.md`](evaluacion/resu
 
 1. Repositorio: este repositorio.
 2. Informe breve: [`informe/informe.md`](informe/informe.md) / [`informe/informe.pdf`](informe/informe.pdf).
-3. Demostración: `streamlit run app.py` (video de respaldo: _[ENLACE AL VIDEO]_).
+3. Demostración: `streamlit run app.py` siguiendo la [guía del dashboard](#21-guía-del-dashboard-pestaña-por-pestaña); guion de video opcional en [`docs/guion_video_demo.md`](docs/guion_video_demo.md).
 4. Evaluación del agente: [`evaluacion/`](evaluacion).
 5. Declaración de uso de IA generativa: [`DECLARACION_USO_IA.md`](DECLARACION_USO_IA.md).

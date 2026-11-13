@@ -81,6 +81,8 @@ def llm_config() -> dict:
     provider = os.getenv("LLM_PROVIDER", "groq").strip().lower()
     base = PROVIDERS.get(provider, PROVIDERS["groq"])
     key = os.getenv("LLM_API_KEY") or (os.getenv(base["key_env"]) if base["key_env"] else None)
+    if key and ("su_llave" in key or key.strip() in ("", "gsk_...", "nvapi-...")):
+        key = None  # valor de ejemplo de .env.example: se trata como "sin llave"
     if provider == "ollama" and not key:
         key = "ollama"
     return {"provider": provider,
