@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import time
 from dataclasses import dataclass, field
 
@@ -31,6 +32,43 @@ PROVIDERS = {
 }
 
 MAX_OBS_CHARS = 9000
+MAX_NUDGES = 2
+DOC_TAGS = ("RES2254", "POECA", "SALUD", "OMS2021", "SIATA", "METEO", "METODO")
+CITE_RE = re.compile(r"\[\s*(RES2254|POECA|SALUD|OMS2021|OMS|SIATA|METEO|METODO|Modelo del proyecto)\b[^\]]*\]",
+                     re.IGNORECASE)
+
+
+def retrieved_tags(steps: list["Step"]) -> set[str]:
+    """Etiquetas de fuente que el agente realmente obtuvo de sus herramientas."""
+    tags = set()
+    for s in steps:
+        if not s.ok:
+            continue
+        if s.tool == "search_docs":
+            tags |= {r["doc_id"].upper() for r in s.observation["result"]["resultados"]}
+        elif s.tool == "get_pm25":
+            tags.add("SIATA")
+        elif s.tool in ("predict_tomorrow", "get_episode_state"):
+            tags |= {"SIATA", "MODELO DEL PROYECTO"}
+    return tags
+
+
+def _grounding_problem(answer: str, steps: list["Step"]) -> str | None:
+    """Detecta respuestas no fundamentadas: citas inventadas o cifras sin herramientas."""
+    cited = {m.group(1).upper() for m in CITE_RE.finditer(answer)}
+    have = retrieved_tags(steps)
+    if "[cita]" in answer.lower():
+        return ("Usaste la etiqueta genérica [cita]. Reemplázala por la etiqueta 'cita' exacta de cada "
+                "fragmento devuelto por search_docs, o por [SIATA] / [Modelo del proyecto].")
+    if not steps and cited:
+        return ("Respondiste con citas pero no llamaste ninguna herramienta en esta conversación. Llama "
+                "primero a la herramienta adecuada (get_pm25, predict_tomorrow, get_episode_state o "
+                "search_docs) y responde solo con lo que devuelva.")
+    bad = sorted(c for c in cited if c not in have)
+    if bad:
+        return (f"Citaste {bad} pero esas fuentes no fueron devueltas por tus herramientas. Llama a "
+                "search_docs (o a la herramienta de datos) para verificar, o elimina esas citas.")
+    return None
 
 
 def llm_config() -> dict:
@@ -54,7 +92,7 @@ CONTEXTO DE LA SESIÓN
 CÓMO TRABAJAR
 1. Para cifras de PM2.5, ICA o comparar estaciones usa get_pm25. Para el día siguiente usa predict_tomorrow. Para saber si hay un episodio o el estado latente del valle usa get_episode_state. Para normas, niveles, protocolos (POECA), recomendaciones de salud, guías OMS, meteorología o cómo funciona el modelo usa search_docs.
 2. Si la pregunta combina datos y recomendaciones (p. ej. "¿puedo salir a correr mañana en Belén?"), llama a la herramienta de datos y también a search_docs. Para cualquier pregunta de salud, ejercicio o grupos sensibles llama SIEMPRE a search_docs.
-3. Nunca inventes cifras, fechas ni normas: usa solo lo que devuelven las herramientas. predict_tomorrow entrega probabilidades de categoría, no una concentración: no inventes un valor de PM2.5 para mañana. Compara con la norma (37 µg/m3) y la guía OMS (15 µg/m3) usando los campos que entrega get_pm25. Si una herramienta devuelve un error, explica el problema al usuario y, si es posible, corrige los argumentos y vuelve a intentar (por ejemplo, con una estación de la lista que entrega el error).
+3. Nunca inventes cifras, fechas ni normas: usa solo lo que devuelven las herramientas. predict_tomorrow entrega probabilidades de categoría, no una concentración: no inventes un valor de PM2.5 para mañana. Para comparar con la norma (37 µg/m3) usa el campo cumple_norma_24h_37 y para la guía OMS (15 µg/m3) el campo veces_guia_oms_24h_15 (p. ej., "equivale a 1,8 veces la guía de la OMS"). Si una herramienta devuelve un error, explica el problema al usuario y, si es posible, corrige los argumentos y vuelve a intentar (por ejemplo, con una estación de la lista que entrega el error).
 4. CITAS OBLIGATORIAS: después de cada afirmación tomada de documentos, escribe la etiqueta 'cita' del fragmento, por ejemplo [RES2254: Puntos de corte del ICA para PM2.5 (Artículo 20, Tabla 6)]. Para datos medidos cita [SIATA] y para pronósticos o estados del HMM cita [Modelo del proyecto]. Cita un documento SOLO si lo recuperaste con search_docs en esta conversación. Termina con una línea "Fuentes:" que liste las fuentes usadas.
 5. Si hablas de salud, aclara que es información general y no consejo médico. No presentes el pronóstico como oficial: las declaratorias las hace el AMVA y los pronósticos oficiales el SIATA.
 6. Si la pregunta no tiene relación con calidad del aire, contaminación, clima o salud ambiental del Valle de Aburrá, dilo amablemente y no uses herramientas.
@@ -79,6 +117,7 @@ class AgentResult:
     error: str | None = None
     model: str = ""
     seconds: float = 0.0
+    verificaciones: int = 0  # veces que el verificador de citas pidió corregir la respuesta
 
     @property
     def tools_called(self) -> list[str]:
@@ -125,8 +164,10 @@ class AirQualityAgent:
                     "No hay llave de API para el LLM. Cree el archivo .env con GROQ_API_KEY=... "
                     "(ver README) o configure LLM_PROVIDER=ollama.")
             from openai import OpenAI
-            self.client = OpenAI(base_url=cfg["base_url"], api_key=cfg["api_key"], timeout=60,
-                                 max_retries=0)
+            # Un LLM local en CPU (Ollama) puede tardar varios minutos por respuesta
+            default_timeout = 900 if cfg["provider"] == "ollama" else 60
+            self.client = OpenAI(base_url=cfg["base_url"], api_key=cfg["api_key"],
+                                 timeout=float(os.getenv("LLM_TIMEOUT", default_timeout)), max_retries=0)
 
     def _system(self, fecha, estacion) -> dict:
         from .service import data_range
@@ -164,6 +205,7 @@ class AirQualityAgent:
         steps: list[Step] = []
         answer = None
         it = 0
+        nudges = 0
         try:
             for it in range(1, self.t_max + 1):
                 resp = self._complete(messages)
@@ -171,6 +213,14 @@ class AirQualityAgent:
                 tool_calls = getattr(msg, "tool_calls", None) or []
                 if not tool_calls:
                     answer = (msg.content or "").strip()
+                    problem = _grounding_problem(answer, steps)
+                    if problem and nudges < MAX_NUDGES and it < self.t_max:
+                        # Verificador de citas: se devuelve la observación al modelo para que corrija
+                        nudges += 1
+                        messages.append({"role": "assistant", "content": answer})
+                        messages.append({"role": "user", "content": f"[Verificación automática] {problem}"})
+                        answer = None
+                        continue
                     break
                 messages.append({"role": "assistant", "content": msg.content or "",
                                  "tool_calls": [{"id": tc.id, "type": "function",
@@ -198,11 +248,11 @@ class AirQualityAgent:
             if not answer:
                 answer = "No pude generar una respuesta. Intente reformular la pregunta."
             return AgentResult(answer, steps, _collect_sources(steps), it, None, self.model,
-                               round(time.time() - t0, 2))
+                               round(time.time() - t0, 2), nudges)
         except Exception as exc:  # noqa: BLE001
             msg = _friendly_api_error(exc)
             return AgentResult(msg, steps, _collect_sources(steps), it, f"{type(exc).__name__}: {exc}",
-                               self.model, round(time.time() - t0, 2))
+                               self.model, round(time.time() - t0, 2), nudges)
 
 
 def _friendly_api_error(exc: Exception) -> str:

@@ -27,12 +27,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 import pandas as pd  # noqa: E402
 
 from aire import config as C  # noqa: E402
-from aire.agent import AirQualityAgent, llm_config  # noqa: E402
+from aire.agent import CITE_RE, AirQualityAgent, llm_config, retrieved_tags  # noqa: E402
 from aire.rag import get_retriever  # noqa: E402
-
-DOC_IDS = ["RES2254", "POECA", "SALUD", "OMS2021", "SIATA", "METEO", "METODO"]
-CITE_RE = re.compile(r"\[(RES2254|POECA|SALUD|OMS2021|SIATA|METEO|METODO|Modelo del proyecto)\b[^\]]*\]",
-                     re.IGNORECASE)
 
 
 def evaluate_answer(q: dict, res) -> dict:
@@ -44,14 +40,7 @@ def evaluate_answer(q: dict, res) -> dict:
         tool_ok = len(called) == 0
     cites = [m.group(1).upper() for m in CITE_RE.finditer(res.answer)]
     cited = len(cites) > 0
-    retrieved = set()
-    for s in res.steps:
-        if s.tool == "search_docs" and s.ok:
-            retrieved |= {r["doc_id"] for r in s.observation["result"]["resultados"]}
-        if s.tool == "get_pm25" and s.ok:
-            retrieved.add("SIATA")
-        if s.tool in ("predict_tomorrow", "get_episode_state") and s.ok:
-            retrieved |= {"MODELO DEL PROYECTO", "SIATA"}
+    retrieved = retrieved_tags(res.steps)
     invalid = [c for c in cites if c not in retrieved]
     valor = q.get("valor_esperado")
     valor_ok = None
@@ -71,6 +60,7 @@ def evaluate_answer(q: dict, res) -> dict:
         "valor_correcto": valor_ok,
         "errores_herramienta": sum(1 for s in res.steps if not s.ok),
         "iteraciones": res.iterations,
+        "verificaciones": res.verificaciones,
         "segundos": res.seconds,
         "error_api": res.error or "",
         "respuesta": res.answer,
@@ -81,13 +71,19 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--solo", nargs="*", help="IDs de preguntas a correr (p. ej. P01 P05)")
     ap.add_argument("--pausa", type=float, default=2.0, help="segundos entre preguntas (límites de uso)")
+    ap.add_argument("--reporte", action="store_true",
+                    help="solo regenerar el reporte .md desde el CSV existente (sin llamar al LLM)")
     args = ap.parse_args()
 
     cfg = llm_config()
     print(f"LLM: {cfg['provider']} / {cfg['model']} @ {cfg['base_url']}")
-    get_retriever()
-    agent = AirQualityAgent()
     preguntas = json.loads((C.EVAL_DIR / "preguntas_agente.json").read_text(encoding="utf-8"))
+    if args.reporte:
+        args.solo = ["__ninguna__"]
+        preguntas = []
+    else:
+        get_retriever()
+        agent = AirQualityAgent()
     if args.solo:
         preguntas = [q for q in preguntas if q["id"] in args.solo]
 
@@ -102,7 +98,22 @@ def main() -> None:
 
     df = pd.DataFrame(rows)
     safe = re.sub(r"[^A-Za-z0-9._-]+", "_", cfg["model"])
-    df.to_csv(C.EVAL_DIR / f"resultados_agente_{safe}.csv", index=False, encoding="utf-8")
+    csv_path = C.EVAL_DIR / f"resultados_agente_{safe}.csv"
+    if args.solo and csv_path.exists():
+        # Corrida parcial: se actualizan solo las preguntas indicadas y se conservan las demás
+        prev = pd.read_csv(csv_path, keep_default_na=False)
+        if len(df):
+            prev = prev[~prev["id"].isin(df["id"])]
+        df = pd.concat([prev, df.astype(str)], ignore_index=True).sort_values("id")
+    df.to_csv(csv_path, index=False, encoding="utf-8")
+    # Se relee del disco para que el resumen use siempre los mismos tipos de dato
+    df = pd.read_csv(csv_path, keep_default_na=False, dtype=str)
+    for col in ["herramienta_correcta", "requiere_cita", "cito_fuente", "cita_valida"]:
+        df[col] = df[col] == "True"
+    df["valor_correcto"] = df["valor_correcto"].map(lambda v: None if v in ("", "None") else v == "True")
+    df["segundos"] = df["segundos"].astype(float)
+    df["errores_herramienta"] = df["errores_herramienta"].astype(int)
+    rows = df.to_dict("records")
 
     req = df[df["requiere_cita"]]
     resumen = {
@@ -120,14 +131,19 @@ def main() -> None:
              f"Fecha de ejecución: {time.strftime('%Y-%m-%d %H:%M')} · T_max = {C.T_MAX}", "",
              "## Resumen", ""] + [f"- **{k}**: {v}" for k, v in resumen.items()] + [
              "", "## Detalle", "",
-             "| ID | Tipo | Pregunta | Esperadas | Llamadas | ¿Herramienta correcta? | ¿Citó fuente? | ¿Citas válidas? | Valor | Errores herr. | s |",
-             "|---|---|---|---|---|---|---|---|---|---|---|"]
+             "| ID | Tipo | Pregunta | Esperadas | Llamadas | ¿Herramienta correcta? | ¿Citó fuente? | ¿Citas válidas? | Valor | Errores herr. | Verif. | s |",
+             "|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in rows:
         lines.append(f"| {r['id']} | {r['tipo']} | {r['pregunta']} | {r['herramientas_esperadas']} | "
                      f"{r['herramientas_llamadas']} | {si(r['herramienta_correcta'])} | "
                      f"{si(r['cito_fuente']) if r['requiere_cita'] else si(r['cito_fuente']) + ' (no requerida)'} | "
                      f"{si(r['cita_valida']) if r['cito_fuente'] else '—'} | {si(r['valor_correcto'])} | "
-                     f"{r['errores_herramienta']} | {r['segundos']} |")
+                     f"{r['errores_herramienta']} | {r['verificaciones']} | {r['segundos']} |")
+    lines += ["", "Criterios: *herramienta correcta* = llamó todas las esperadas (o ninguna si la pregunta "
+              "está fuera de tema); *citó fuente* = la respuesta contiene etiquetas [DOC: sección], [SIATA] o "
+              "[Modelo del proyecto]; *citas válidas* = todas las etiquetas citadas corresponden a fuentes "
+              "devueltas por las herramientas en esa conversación; *Verif.* = veces que el verificador de "
+              "citas del agente pidió corregir la respuesta."]
     lines += ["", "## Respuestas completas", ""]
     for r in rows:
         lines += [f"### {r['id']} · {r['pregunta']}", "",
