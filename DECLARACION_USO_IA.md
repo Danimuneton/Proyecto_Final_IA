@@ -10,7 +10,6 @@ De acuerdo con el pacto pedagógico del curso, declaramos las herramientas de IA
 | Herramienta | Proveedor / modelo | Propósito | Alcance |
 |---|---|---|---|
 | **Kiro** (agente de programación en la web) | Modelo Claude (Anthropic) | Revisar el enunciado y la rúbrica; verificar el acceso a las fuentes de datos; proponer la arquitectura; **generar la mayor parte del código** (pipeline de datos, HMM, regresión logística, evaluación, RAG, herramientas, agente y dashboard); redactar el corpus de síntesis, los notebooks, el README, el informe y esta plantilla de declaración; ejecutar pruebas y la evaluación con un LLM local | Alto. El código y los textos fueron producidos por la herramienta a partir de nuestras instrucciones y luego revisados por el equipo (ver §3) |
-| _[Otra herramienta, si aplica: ChatGPT, Copilot, Gemini…]_ | | | |
 
 ## 2. IA generativa que forma parte del producto
 
