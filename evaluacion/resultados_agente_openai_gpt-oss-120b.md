@@ -1,0 +1,223 @@
+# Evaluación del agente · groq / `openai/gpt-oss-120b`
+
+Fecha de ejecución: 2026-11-13 14:41 · T_max = 6
+
+## Resumen
+
+- **modelo**: openai/gpt-oss-120b
+- **proveedor**: groq
+- **n_preguntas**: 14
+- **herramienta_correcta**: 11/14
+- **cito_fuente (preguntas que lo requieren)**: 10/11
+- **citas_validas (preguntas que lo requieren)**: 10/11
+- **valor_numerico_correcto**: 3/3
+- **errores_api**: 0
+- **tiempo_medio_s**: 3.8
+
+## Detalle
+
+| ID | Tipo | Pregunta | Esperadas | Llamadas | ¿Herramienta correcta? | ¿Citó fuente? | ¿Citas válidas? | Valor | Errores herr. | Verif. | s |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| P01 | datos | ¿Cuál fue el PM2.5 en la estación de Belén y qué categoría ICA tiene? | get_pm25 | get_pm25 | ✅ | ✅ | ✅ | ✅ | 0 | 0 | 1.56 |
+| P02 | datos | ¿Qué estación tuvo la peor calidad del aire en todo el valle el 20 de marzo de 2024? | get_pm25 | get_pm25 | ✅ | ✅ | ✅ | — | 0 | 0 | 1.7 |
+| P03 | prediccion | ¿Cómo estará la calidad del aire mañana en Itagüí? | predict_tomorrow | predict_tomorrow, predict_tomorrow | ✅ | ✅ | ✅ | — | 1 | 0 | 9.13 |
+| P04 | prediccion_escenario | Si mañana llueve 25 mm, ¿cambia el pronóstico para la estación MED-BEME? Compáralo con el pronóstico sin ese escenario. | predict_tomorrow | predict_tomorrow, predict_tomorrow | ✅ | ✅ | ✅ | — | 0 | 0 | 2.1 |
+| P05 | episodio | ¿Está el Valle de Aburrá en un episodio de contaminación hoy? | get_episode_state | get_episode_state, search_docs, search_docs | ✅ | ✅ | ✅ | — | 0 | 1 | 20.75 |
+| P06 | documental | ¿Cuál es el nivel máximo permitido de PM2.5 en 24 horas en Colombia y qué recomienda la OMS? | search_docs | search_docs | ✅ | ✅ | ✅ | ✅ | 0 | 1 | 3.97 |
+| P07 | documental | ¿Qué es el POECA y qué medidas se toman durante un episodio crítico? | search_docs | search_docs | ✅ | ✅ | ✅ | — | 0 | 0 | 2.56 |
+| P08 | combinada | Tengo asma, ¿puedo salir a trotar mañana en Envigado? | predict_tomorrow, search_docs | predict_tomorrow, predict_tomorrow, search_docs | ✅ | ❌ | — | — | 1 | 0 | 2.72 |
+| P09 | documental | ¿Por qué en marzo suele empeorar la calidad del aire en el valle? | search_docs | search_docs | ✅ | ✅ | ✅ | — | 0 | 0 | 1.81 |
+| P10 | error_estacion | ¿Cómo está el aire hoy en Rionegro? | get_pm25 | get_pm25, get_pm25 | ✅ | ✅ (no requerida) | ✅ | — | 1 | 0 | 1.96 |
+| P11 | error_fecha | Dame el PM2.5 de Bello del 15 de enero de 2025. | get_pm25 | (ninguna) | ❌ | ❌ (no requerida) | — | — | 0 | 0 | 0.55 |
+| P12 | documental_modelo | ¿Qué tan confiable es el pronóstico de mañana de este sistema comparado con suponer que mañana será igual a hoy? | search_docs | get_pm25, predict_tomorrow | ❌ | ✅ | ✅ | — | 0 | 0 | 2.07 |
+| P13 | fuera_de_tema | ¿Quién ganó el último partido de Atlético Nacional? | (ninguna) | (ninguna) | ✅ | ❌ (no requerida) | — | — | 0 | 0 | 0.61 |
+| P14 | combinada | Compara el PM2.5 de hoy en la estación CEN-TRAF con la norma colombiana y dime qué deben hacer los grupos sensibles. | get_pm25, search_docs | get_pm25 | ❌ | ✅ | ✅ | ✅ | 0 | 0 | 1.85 |
+
+Criterios: *herramienta correcta* = llamó todas las esperadas (o ninguna si la pregunta está fuera de tema); *citó fuente* = la respuesta contiene etiquetas [DOC: sección], [SIATA] o [Modelo del proyecto]; *citas válidas* = todas las etiquetas citadas corresponden a fuentes devueltas por las herramientas en esa conversación; *Verif.* = veces que el verificador de citas del agente pidió corregir la respuesta.
+
+## Respuestas completas
+
+### P01 · ¿Cuál fue el PM2.5 en la estación de Belén y qué categoría ICA tiene?
+
+*Herramientas:* get_pm25 · *Citas:* SIATA
+
+> El 15 de marzo de 2024, en la estación **MED‑BEME (Belén)** se registró una concentración de **PM2.5 = 27.4 µg/m³**. Según el Índice de Calidad del Aire (ICA) esa concentración corresponde a una **categoría “Aceptable”** (ICA = 80)【SIATA】.  
+> 
+> Fuentes: [SIATA]
+
+### P02 · ¿Qué estación tuvo la peor calidad del aire en todo el valle el 20 de marzo de 2024?
+
+*Herramientas:* get_pm25 · *Citas:* SIATA
+
+> La estación con la peor calidad del aire en todo el Valle el 20 de marzo de 2024 fue **CEN‑TRAF (Centro de Tráfico, Medellín)**, con una concentración de PM2.5 de 44.3 µg/m³, un ICA de 118 y categoría “Dañina a la salud de grupos sensibles” (naranja) 【SIATA】.  
+> 
+> Fuentes:  
+> - [SIATA] (datos de PM2.5 del 2024‑03‑20).
+
+### P03 · ¿Cómo estará la calidad del aire mañana en Itagüí?
+
+*Herramientas:* predict_tomorrow, predict_tomorrow · *Citas:* MODELO DEL PROYECTO
+
+> Mañana en Itagüí (estación MED‑BEME) se espera que la calidad del aire siga **Aceptable**. El modelo predice una probabilidad del 91 % de que la categoría ICA sea “Aceptable”, un 0,8 % de “Buena” y un 8 % de “Dañina GS o peor”.  
+> 
+> Hoy la concentración medida fue 27,4 µg/m³ (categoría “Aceptable”). El estado latente HMM indica un **episodio crítico** en el valle, pero la persistencia sugiere que mañana la condición se mantendrá aceptable.  
+> 
+> No se esperan lluvias y la nubosidad será alta (≈79 %), lo que ayuda a limitar el aumento del PM2.5.  
+> 
+> *No es un consejo médico; el pronóstico no es oficial (SIATA/AMVA).*  
+> 
+> Fuentes: [Modelo del proyecto]
+
+### P04 · Si mañana llueve 25 mm, ¿cambia el pronóstico para la estación MED-BEME? Compáralo con el pronóstico sin ese escenario.
+
+*Herramientas:* predict_tomorrow, predict_tomorrow · *Citas:* MODELO DEL PROYECTO
+
+> **Pronóstico con lluvia 25 mm (MED‑BEME)**  
+> - Probabilidad de **Buena**: 0.9 %  
+> - Probabilidad de **Aceptable**: 85 %  
+> - Probabilidad de **Dañina GS o peor**: 14 %  
+> 
+> **Pronóstico sin lluvia (escenario base)**  
+> - Probabilidad de **Buena**: 0.8 %  
+> - Probabilidad de **Aceptable**: 91 %  
+> - Probabilidad de **Dañina GS o peor**: 8 %  
+> 
+> La lluvia de 25 mm reduce la probabilidad de que la categoría “Aceptable” se mantenga (de 91 % a 85 %) y aumenta la de “Dañina GS o peor” (de 8 % a 14 %). El modelo indica que la precipitación disminuye la tendencia al episodio crítico, pero aún persiste una alta probabilidad de contaminación dañina.  
+> 
+> *Nota: el pronóstico no es oficial; es una estimación del modelo del proyecto.*  
+> 
+> Fuentes: [Modelo del proyecto]
+
+### P05 · ¿Está el Valle de Aburrá en un episodio de contaminación hoy?
+
+*Herramientas:* get_episode_state, search_docs, search_docs · *Citas:* MODELO DEL PROYECTO, OMS2021, RES2254
+
+> Sí, el modelo indica que hoy 2024‑03‑15 el Valle de Aburrá está en **episodio crítico de contaminación**. En la estación MED‑BEME, que usamos por defecto, el nivel medido es 27.4 µg/m³, dentro del rango de “Episodio crítico” (≈30 µg/m³) según el modelo HMM [Modelo del proyecto].
+> 
+> **Qué significa:**  
+> - El ICA para PM2.5 está en la categoría **Rojo** (≥ 150 ICA).  
+> - La concentración supera la norma colombiana de 24 h (37 µg/m³) [RES2254: Niveles máximos permisibles a 2018 (Artículo 2, Tabla 1)].  
+> - Es aproximadamente **1,8 veces** la guía OMS de 15 µg/m³ [OMS2021: Niveles guía de la OMS 2021 para PM2.5].
+> 
+> **Recomendaciones de salud (no consejo médico):**  
+> - Personas sensibles (asma, niños, ancianos) deben limitar actividades al aire libre.  
+> - Uso de mascarilla N95 si se necesita salir.  
+> 
+> **Pronóstico:** El modelo no oficial del proyecto sugiere que la condición crítica podría mantenerse mañana, con alta probabilidad de categoría roja.
+> 
+> *Fuentes:* [Modelo del proyecto] , [RES2254: Niveles máximos permisibles a 2018 (Artículo 2, Tabla 1)] , [OMS2021: Niveles guía de la OMS 2021 para PM2.5]
+
+### P06 · ¿Cuál es el nivel máximo permitido de PM2.5 en 24 horas en Colombia y qué recomienda la OMS?
+
+*Herramientas:* search_docs · *Citas:* OMS2021, RES2254
+
+> En Colombia, el límite máximo permitido para PM2.5 en un promedio de 24 h es **37 µg/m³** [RES2254: Niveles máximos permisibles vigentes desde 2018 (Artículo 2, Tabla 1)]​.  
+> 
+> La Organización Mundial de la Salud (OMS) recomienda un **nivel guía de 15 µg/m³** para el mismo promedio de 24 h, expresado como percentil 99 (no superarse más de 3‑4 días al año) [OMS2021: Niveles guía de la OMS 2021 para PM2.5]​.  
+> 
+> Así, la norma colombiana permite casi **2,5 veces** el valor guía de la OMS [OMS2021: Comparación con la norma colombiana (Resolución 2254 de 2017)]​.  
+> 
+> *Nota: la información no constituye consejo médico y el cumplimiento de la norma se verifica diariamente por SIATA/AMVA.*  
+> 
+> Fuentes: [RES2254], [OMS2021].
+
+### P07 · ¿Qué es el POECA y qué medidas se toman durante un episodio crítico?
+
+*Herramientas:* search_docs · *Citas:* POECA
+
+> El POECA (Plan de Ordenamiento y Estrategia de Contingencia Ambiental) es el marco normativo que regula la gestión de episodios de contaminación del aire en el Valle de Aburrá. Cuando el modelo de calidad del aire detecta un **episodio crítico** (estado oculto “Episodio crítico” del HMM), el AMVA activa el POECA y se aplican medidas en tres niveles :
+> 
+> 1. **Previas / preventivas** – comunicación del ICA por estación y recomendaciones de salud a la población; intensificación de controles a vehículos con emisiones visibles (camiones, volquetas, transporte de carga) y a fuentes industriales (calderas, hornos, canteras) [cita: [POECA: Medidas típicas durante los episodios]].
+> 
+> 2. **Restricciones de movilidad** – ampliación temporal del pico‑y‑placa ambiental para vehículos particulares y motocicletas; limitación del tránsito de carga en franjas horarias críticas [cita: [POECA: Medidas típicas durante los episodios]].
+> 
+> 3. **Gestión institucional** – coordinación entre AMVA, secretarías de tránsito y salud; divulgación obligatoria del riesgo y de acciones de mitigación; posible declaración de “Estado de Prevención” o “Estado de Emergencia” según la resolución metropolitana [cita: [POECA: Periodos de gestión de episodios (temporadas críticas)]].
+> 
+> Estas medidas buscan reducir la exposición de la población y controlar las fuentes emisoras mientras se normaliza la calidad del aire.  
+> 
+> **Fuentes:** [POECA: Medidas típicas durante los episodios], [POECA: Periodos de gestión de episodios (temporadas críticas)].
+
+### P08 · Tengo asma, ¿puedo salir a trotar mañana en Envigado?
+
+*Herramientas:* predict_tomorrow, predict_tomorrow, search_docs · *Citas:* ninguna
+
+> Según el modelo del proyecto, la categoría ICA para mañana en la estación **MED‑BEME** (que representa a Envigado) tiene una probabilidad del 91 % de ser **Aceptable** y solo un 8 % de caer en **Dañina (GS o peor)**【Modelo del proyecto】. La calidad hoy es **Aceptable** (PM2.5 = 27.4 µg/m³)【Modelo del proyecto】.
+> 
+> Para una categoría **Aceptable (PM2.5 13‑37 µg/m³)** la normativa indica que *“pueden presentarse síntomas respiratorios en grupos sensibles; las personas inusualmente sensibles deberían considerar reducir actividades prolongadas o intensas al aire libre”*【SALUD: ICA Amarillo - Aceptable (PM2.5 de 13 a 37 µg/m3)】. El asma es un factor de sensibilidad, por lo que se recomienda:
+> 
+> * Evaluar tu estado antes de salir y, si notas molestias, reducir la intensidad o la duración del trote.  
+> * Preferir horarios con menor tráfico (por ejemplo, después de la hora pico).  
+> * Si el aire está muy cargado, considerar hacer ejercicio en interiores.
+> 
+> Recuerda que esta información no sustituye consejo médico y el pronóstico no es oficial (SIATA/AMVA).  
+> 
+> **Fuentes:** 【Modelo del proyecto】, 【SALUD: ICA Amarillo - Aceptable (PM2.5 de 13 a 37 µg/m3)】
+
+### P09 · ¿Por qué en marzo suele empeorar la calidad del aire en el valle?
+
+*Herramientas:* search_docs · *Citas:* METEO
+
+> En marzo el valle atraviesa la **transición de la temporada seca a la lluviosa**, un periodo donde la atmósfera tiende a ser más estable y la radiación solar es menor [METEO: Temporadas críticas: transición seca‑lluviosa].  
+> 
+> - **Inversión térmica**: las mañanas son frías y la capa de aire cerca del suelo se mantiene estable, impidiendo que el PM2.5 suba y favoreciendo su acumulación [METEO: Estabilidad atmosférica, nubes y radiación].  
+> - **Baja velocidad del viento**: el valle es estrecho y semicerrado; en marzo el viento medio suele ser débil (0,5‑2 m/s), limitando la ventilación [METEO: Un valle estrecho y semicerrado].  
+> - **Nubosidad persistente**: la cobertura de nubes reduce la radiación solar, mantiene la capa de mezcla pequeña y favorece la concentración de partículas [METEO: Estabilidad atmosférica, nubes y radiación].  
+> 
+> Cuando finalmente llega la lluvia, el “lavado húmedo” elimina gran parte de esas partículas, pero los días previos a la precipitación pueden ser los más críticos [METEO: Papel de la lluvia y del viento].
+> 
+> **Fuentes:** [METEO: Temporadas críticas: transición seca‑lluviosa], [METEO: Estabilidad atmosférica, nubes y radiación], [METEO: Un valle estrecho y semicerrado], [METEO: Papel de la lluvia y del viento]
+
+### P10 · ¿Cómo está el aire hoy en Rionegro?
+
+*Herramientas:* get_pm25, get_pm25 · *Citas:* SIATA
+
+> Hoy, en la estación **MED‑BEME** (Medellín) se registró **PM2.5 = 27.4 µg/m³** (ICA = 80), categoría **Aceptable**. Cumple la norma colombiana de 24 h (37 µg/m³) y equivale a **1.8 veces la guía OMS** (15 µg/m³).  
+> 
+> En Rionegro no hay estación propia; usamos la más cercana (MED‑BEME) como referencia del valle.  
+> 
+> **Salud:** la exposición a este nivel es generalmente segura para la población, aunque personas con problemas respiratorios pueden sentir molestias leves. No es consejo médico.  
+> 
+> Fuentes: [SIATA]
+
+### P11 · Dame el PM2.5 de Bello del 15 de enero de 2025.
+
+*Herramientas:* (ninguna) · *Citas:* ninguna
+
+> Lo siento, pero no dispongo de datos de PM2.5 para esa fecha. No puedo proporcionar información fuera del rango disponible (31 jul 2023 – 30 jul 2024).
+
+### P12 · ¿Qué tan confiable es el pronóstico de mañana de este sistema comparado con suponer que mañana será igual a hoy?
+
+*Herramientas:* get_pm25, predict_tomorrow · *Citas:* MODELO DEL PROYECTO
+
+> El modelo del proyecto predice la categoría de PM2.5 para mañana con una **exactitud del 81 %** y un **F1‑macro de 0.69** (recall 0.63 para la categoría “Dañina”). La línea base de persistencia –es decir, asumir que mañana será igual que hoy– tiene una exactitud de **80 %** y un F1‑macro de 0.68 [Modelo del proyecto].
+> 
+> En la práctica, la diferencia de desempeño es pequeña (≈1 % más de acierto y ligeramente mejor detección de episodios dañinos). Por tanto, el pronóstico aporta un leve beneficio respecto a la simple suposición de “mañana = hoy”, pero la confiabilidad global sigue siendo alta y comparable a la persistencia.
+> 
+> **Resumen:** el modelo es ligeramente más fiable que la suposición de igualdad, con una mejora marginal en la capacidad de anticipar episodios críticos.  
+> 
+> Fuentes: [Modelo del proyecto]
+
+### P13 · ¿Quién ganó el último partido de Atlético Nacional?
+
+*Herramientas:* (ninguna) · *Citas:* ninguna
+
+> Lo siento, pero esa pregunta no está relacionada con la calidad del aire, el clima o la salud ambiental del Valle de Aburrá. No puedo ayudar con ella.
+
+### P14 · Compara el PM2.5 de hoy en la estación CEN-TRAF con la norma colombiana y dime qué deben hacer los grupos sensibles.
+
+*Herramientas:* get_pm25 · *Citas:* SIATA
+
+> Hoy, 15 mar 2024, la estación **CEN‑TRAF** registró **PM2.5 = 37.7 µg/m³** (ICA = 101), categoría **“Dañina GS (naranja)”**.  
+> 
+> - **Norma colombiana (24 h = 37 µg/m³)**: **no cumple** la norma (37.7 > 37)【SIATA】.  
+> - **Guía OMS (24 h = 15 µg/m³)**: la concentración está **2.5 veces** por encima de la recomendación OMS【SIATA】.  
+> 
+> **Recomendaciones para grupos sensibles** (niños, ancianos, embarazadas, personas con enfermedades respiratorias o cardiovasculares):  
+> - Limitar actividades al aire libre, especialmente ejercicio intenso.  
+> - Mantener puertas y ventanas cerradas; usar filtros de aire si es posible.  
+> - Consultar a un profesional de salud si aparecen síntomas respiratorios o cardiovasculares.  
+> 
+> *Este pronóstico no es oficial; la información proviene de SIATA y la normativa vigente.*  
+> 
+> Fuentes: [SIATA]
+
