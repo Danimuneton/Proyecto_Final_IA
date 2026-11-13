@@ -103,8 +103,11 @@ def compact_for_llm(name: str, obs: dict) -> dict:
         out = {"ok": True, "fecha": r["fecha"], "n_estaciones": r["n_estaciones"],
                "por_estado_hmm": r["estaciones_por_estado_hmm"],
                "estaciones_>=38": r["estaciones_en_rango_prevencion_o_mas (>=38 µg/m3)"],
-               "detalle": [f"{d['estacion']}: {d['estado_mas_probable']}, {d['pm25']} µg/m3" for d in r["detalle"]],
-               "nota": "Estados HMM: Normal ~12, Alerta ~18, Episodio crítico ~30 µg/m3; no son declaratorias oficiales del AMVA.",
+               "detalle": [f"{d['estacion']}: estado HMM {d['estado_mas_probable']}; {d['pm25']} µg/m3, ICA "
+                           f"{_short_cat(d['categoria_ica'])}" for d in r["detalle"]],
+               "nota": ("Estados HMM: Normal ~12, Alerta ~18, Episodio crítico ~30 µg/m3. Son regímenes estadísticos, "
+                        "NO categorías ICA ni declaratorias del AMVA: un día en 'Episodio crítico' puede tener ICA "
+                        "Aceptable y cumplir la norma (37 µg/m3)."),
                "cita": "[Modelo del proyecto]"}
         if "secuencia_viterbi_14_dias" in r:
             out["viterbi_14_dias"] = list(r["secuencia_viterbi_14_dias"].values())
@@ -114,6 +117,21 @@ def compact_for_llm(name: str, obs: dict) -> dict:
                                            for f in r["resultados"]],
                 "instruccion": "Cite con la etiqueta 'cita' exacta."}
     return obs
+
+
+def _tomorrow_to_base(fecha, default_date):
+    """Si el LLM pasa a predict_tomorrow la fecha de MAÑANA (fecha objetivo), se usa hoy como base.
+
+    En la evaluación con Groq el modelo pasaba la fecha de mañana, recibía un error y reintentaba
+    con la estación seleccionada en el dashboard en vez de la pedida."""
+    if not fecha or default_date is None:
+        return fecha
+    import pandas as pd
+    try:
+        f, hoy = pd.Timestamp(str(fecha)).normalize(), pd.Timestamp(str(default_date)).normalize()
+    except Exception:  # noqa: BLE001
+        return fecha
+    return str(hoy.date()) if f == hoy + pd.Timedelta(days=1) else fecha
 
 
 def _check_not_future(fecha, default_date) -> None:
@@ -131,7 +149,8 @@ def _check_not_future(fecha, default_date) -> None:
     if f > hoy:
         raise service.ToolError(
             f"La fecha {f.date()} es posterior a la fecha de consulta ({hoy.date()}), que es 'hoy' en "
-            "el dashboard: no hay mediciones del futuro. Para mañana use predict_tomorrow sin fecha.")
+            "el dashboard: no hay mediciones del futuro. Para mañana use predict_tomorrow sin fecha y con "
+            "LA MISMA estación que pidió el usuario.")
 
 
 def call_tool(name: str, args: dict | str | None, default_date=None) -> dict[str, Any]:
@@ -141,6 +160,8 @@ def call_tool(name: str, args: dict | str | None, default_date=None) -> dict[str
         if isinstance(args, str):
             args = json.loads(args) if args.strip() else {}
         args = dict(args or {})
+        if name == "predict_tomorrow":
+            args["fecha"] = _tomorrow_to_base(args.get("fecha"), default_date)
         _check_not_future(args.get("fecha"), default_date)
         if name == "get_pm25":
             if "estacion" not in args:

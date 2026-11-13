@@ -87,7 +87,8 @@ def find_stations(estacion) -> pd.DataFrame:
     st = resolve_station(estacion)
     if st.empty:
         opciones = "; ".join(f"{r.nombre_corto} ({r.municipio})" for r in active_stations().itertuples())
-        raise ToolError(f"No encontré la estación o municipio '{estacion}'. "
+        raise ToolError(f"No encontré la estación o municipio '{estacion}'. No hay estaciones de esa zona "
+                        "en los datos: dígaselo al usuario y NO lo reemplace por otra estación. "
                         f"Estaciones disponibles: {opciones}.")
     return st
 

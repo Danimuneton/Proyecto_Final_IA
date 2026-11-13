@@ -35,7 +35,7 @@ MAX_OBS_CHARS = 3500
 MAX_WAIT_RATE_LIMIT = 25  # segundos máximos de espera ante un 429
 MAX_NUDGES = 2
 DOC_TAGS = ("RES2254", "POECA", "SALUD", "OMS2021", "SIATA", "METEO", "METODO")
-CITE_RE = re.compile(r"\[\s*(RES2254|POECA|SALUD|OMS2021|OMS|SIATA|METEO|METODO|Modelo del proyecto)\b[^\]]*\]",
+CITE_RE = re.compile(r"[\[【]\s*(?:cita:\s*\[)?\s*(RES2254|POECA|SALUD|OMS2021|OMS|SIATA|METEO|METODO|Modelo del proyecto)\b[^\]】]*[\]】]",
                      re.IGNORECASE)
 
 
@@ -65,6 +65,11 @@ def _grounding_problem(answer: str, steps: list["Step"]) -> str | None:
         return ("Respondiste con citas pero no llamaste ninguna herramienta en esta conversación. Llama "
                 "primero a la herramienta adecuada (get_pm25, predict_tomorrow, get_episode_state o "
                 "search_docs) y responde solo con lo que devuelva.")
+    called = {s.tool for s in steps}
+    if (re.search(r"grupos sensibles|asma|recomendaci|mascarilla|tapabocas|N95|ejercicio", answer, re.I)
+            and "search_docs" not in called):
+        return ("Diste recomendaciones de salud sin consultar documentos. Llama a search_docs (p. ej. "
+                "'recomendaciones de salud ICA <categoría>') y basa las recomendaciones solo en lo que devuelva.")
     bad = sorted(c for c in cited if c not in have)
     if bad:
         return (f"Citaste {bad} pero esas fuentes no fueron devueltas por tus herramientas. Llama a "
@@ -86,10 +91,11 @@ def llm_config() -> dict:
 
 
 SYSTEM_PROMPT = """Eres "AireBot Aburrá": explicas la calidad del aire (PM2.5) del Valle de Aburrá en español claro y breve.
-Contexto: datos SIATA del {inicio} al {fin}. "Hoy" = {fecha} (fecha del dashboard); "mañana" = el día siguiente. Estación seleccionada: {estacion} (úsala si no mencionan otra).
+Contexto: datos SIATA del {inicio} al {fin}. "Hoy" = {fecha} (fecha del dashboard); "mañana" = el día siguiente. Estación seleccionada: {estacion}: úsala SOLO si el usuario no menciona otra estación o municipio. Si menciona un municipio, usa ese municipio aunque una herramienta dé error; nunca respondas con otra estación en su lugar.
+Siglas: POECA = Plan Operacional para Enfrentar Episodios de Contaminación Atmosférica; ICA = Índice de Calidad del Aire; AMVA = Área Metropolitana del Valle de Aburrá.
 Reglas:
 1. Cifras de PM2.5/ICA o comparar estaciones -> get_pm25. Mañana -> predict_tomorrow. ¿Episodio? -> get_episode_state. Norma, niveles, POECA, salud, OMS, meteorología o metodología -> search_docs. Preguntas de salud, ejercicio o grupos sensibles: usa SIEMPRE también search_docs.
-2. No inventes cifras ni normas. predict_tomorrow da probabilidades de categoría, no una concentración. Para la norma usa cumple_norma_24h_37 y para la OMS veces_guia_oms_15 (p. ej. "1,8 veces la guía OMS").
+2. No inventes cifras, normas ni recomendaciones. Las categorías ICA salen solo de get_pm25; los estados del HMM no son colores del ICA. predict_tomorrow da probabilidades de categoría, no una concentración. Para la norma usa cumple_norma_24h_37 y para la OMS veces_guia_oms_15 (p. ej. "1,8 veces la guía OMS").
 3. Si una herramienta da error, explícalo y, si puedes, corrige los argumentos y reintenta.
 4. Cita cada afirmación con la etiqueta 'cita' que devuelve la herramienta, p. ej. [RES2254: Puntos de corte del ICA para PM2.5 (Artículo 20, Tabla 6)], [SIATA] o [Modelo del proyecto]. Cita documentos SOLO si los recuperaste con search_docs. Termina con "Fuentes:".
 5. En salud aclara que no es consejo médico; el pronóstico no es oficial (SIATA/AMVA).
