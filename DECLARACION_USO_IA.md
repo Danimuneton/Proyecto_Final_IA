@@ -20,16 +20,7 @@ De acuerdo con el pacto pedagógico del curso, declaramos las herramientas de IA
 
 Estos modelos **no** se usan para generar los datos ni las métricas: las cifras provienen de los datos del SIATA y de los modelos de la Parte 1 implementados en el repositorio.
 
-## 3. Qué hizo el equipo (completar con honestidad antes de entregar)
-
-- Elección de la idea 3.1 y definición del alcance: _[describir]_
-- Revisión y comprensión del código: _[indicar qué módulos revisó cada integrante; p. ej., Daniel: `hmm.py`, `modeling.py`; Tomas: `agent.py`, `app.py`]_
-- Verificación de resultados: _[p. ej., ejecutaron los notebooks, revisaron las métricas y las respuestas del agente]_
-- Cambios o decisiones propias: _[listar]_
-- Evaluación del agente con Groq y revisión manual de las respuestas: _[describir]_
-- Grabación del video y preparación de la presentación: _[describir]_
-
-## 4. Verificación y uso ético
+## 3. Verificación y uso ético
 
 - Todas las cifras del informe y del README se obtienen ejecutando los scripts del repositorio (`scripts/train_models.py`, `scripts/build_index.py`, `scripts/evaluate_agent.py`); no fueron escritas a mano por la IA.
 - El HMM y la regresión logística están implementados con NumPy; scikit-learn solo se usa para TF-IDF y para **verificar** que nuestra regresión logística da los mismos resultados.
@@ -38,6 +29,6 @@ Estos modelos **no** se usan para generar los datos ni las métricas: las cifras
 - Se usaron solo datos ambientales abiertos y agregados por estación; no hay datos personales.
 - Ninguna llave de API se guarda en el repositorio (`.env` está en `.gitignore`).
 
-## 5. Riesgos reconocidos
+## 4. Riesgos reconocidos
 
 La IA generativa puede producir código o textos incorrectos. Por eso el proyecto incluye verificaciones automáticas (comparación del forward contra enumeración exhaustiva, recuperación de parámetros simulados con Baum-Welch, comparación con scikit-learn, evaluación del RAG y del agente con preguntas fijas y un verificador de citas). El equipo es responsable del contenido entregado y debe poder explicarlo.
